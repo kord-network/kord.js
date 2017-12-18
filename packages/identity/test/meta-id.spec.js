@@ -1,10 +1,10 @@
-const metaId = require('../dist/meta-id')
+const metaIdentity = require('../dist/meta-identity')
 
 /**
- * @meta.js/id tests
+ * @meta.js/identity tests
  */
-describe('@meta.js/id :: createMetaIdObject', () => {
-  it('Should create a valid META-ID object', () => {
+describe('@meta.js/identity :: createIdentityObject', () => {
+  it('Should create a valid META Identity object', () => {
     const account = {
       address: '0xc4300acba32f5631ec4e45b3d62bd31f947a27e3',
       privateKey:
@@ -12,7 +12,7 @@ describe('@meta.js/id :: createMetaIdObject', () => {
     }
     const username = 'jaak'
 
-    const actual = metaId.createMetaIdObject(account, username)
+    const actual = metaIdentity.createIdentityObject(account, username)
     const expected = {
       owner: '0xc4300acba32f5631ec4e45b3d62bd31f947a27e3',
       signature:
@@ -24,22 +24,22 @@ describe('@meta.js/id :: createMetaIdObject', () => {
   })
 })
 
-describe('@meta.js/id :: getMetaIdUsernameFromName', () => {
-  it('Should generate a META-ID username', () => {
+describe('@meta.js/identity :: getUsernameFromName', () => {
+  it('Should generate a META Identity username', () => {
     const commonName = 'Viktor Trón'
 
-    const actual = metaId.getMetaIdUsernameFromName(commonName)
+    const actual = metaIdentity.getUsernameFromName(commonName)
     const expected = 'viktor-tron.id.meta'
 
     expect(actual).toEqual(expected)
   })
 })
 
-describe('@meta.js/id :: getMetaIdFromUsername', () => {
-  it('Should generate a META-ID username hash', () => {
+describe('@meta.js/identity :: getIdFromUsername', () => {
+  it('Should generate a META Identity username hash', () => {
     const username = 'viktor-tron.id.meta'
 
-    const actual = metaId.getMetaIdFromUsername(username)
+    const actual = metaIdentity.getIdFromUsername(username)
     const expected =
       '0xcc1bfbdf07aaaec4dff026e54023295684af8e831c45cf514475dd65253eaced'
 

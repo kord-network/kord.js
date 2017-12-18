@@ -1,4 +1,4 @@
-import * as claims from '@meta.js/claims'
-import * as id from '@meta.js/id'
+import * as identity from '@meta.js/identity'
+import * as identityClaims from '@meta.js/identity-claims'
 
-export { claims, id }
+export { identity, identityClaims }

@@ -1,10 +1,10 @@
 {
-  "name": "@meta.js/claims",
+  "name": "@meta.js/identity-claims",
   "version": "0.0.0",
-  "description": "META Network JavaScript library - claims module",
-  "main": "dist/meta-claims.js",
-  "module": "dist/meta-claims.mjs",
-  "jsnext:main": "dist/meta-claims.mjs",
+  "description": "META Network JavaScript library - identity claims module",
+  "main": "dist/meta-identity-claims.js",
+  "module": "dist/meta-identity-claims.mjs",
+  "jsnext:main": "dist/meta-identity-claims.mjs",
   "engines": {
     "node": ">= 8.9.0 <= 8.9.1",
     "yarn": ">= 1.3.0 <= 1.3.2"

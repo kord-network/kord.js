@@ -1,9 +1,7 @@
 {
-  "name": "meta.js",
+  "private": true,
   "version": "0.0.0",
   "description": "META Network JavaScript library",
-  "main": "index.js",
-  "private": true,
   "workspaces": [
     "packages/*"
   ],
@@ -38,7 +36,8 @@
   },
   "pre-commit": {
     "run": [
-      "lint:staged"
+      "lint:staged",
+      "test"
     ],
     "silent": true
   },

@@ -10,16 +10,16 @@ import {
 } from 'ethereumjs-util'
 
 /**
- * Create a valid META Claim object to verify a new claim
+ * Create a valid META Identity Claim object to verify a new identity claim
  *
  * @param  {Object} account            Ethereum account object
  * @param  {String} account.address    Account Ethereum address
  * @param  {String} account.privateKey Account private key
- * @param  {Object} claimMessage       Raw claim message
- * @param  {Object} extraData          Any extra properties to add to claim object
- * @return {Object}                    META Claim object
+ * @param  {Object} claimMessage       Raw identity claim message
+ * @param  {Object} extraData          Any extra properties to add to identity claim object
+ * @return {Object}                    META Identity Claim object
  */
-export const createMetaClaimObject = (
+export const createIdentityClaimObject = (
   account,
   claimMessage,
   extraData = {}
@@ -36,13 +36,13 @@ export const createMetaClaimObject = (
 }
 
 /**
- * Recover address from claim hash
+ * Recover address from identity claim hash
  *
- * @param  {String} claimHash sha3 hash of claim message
+ * @param  {String} claimHash sha3 hash of identity claim message
  * @param  {String} signature Ethereum RPC signature object
  * @return {String}           Recovered Ethereum public address hex
  */
-export const recoverAddressFromClaim = (claimHash, signature) => {
+export const recoverAddressFromIdentityClaim = (claimHash, signature) => {
   // generate signature parameters
   const { v, r, s } = fromRpcSig(signature)
 
@@ -84,16 +84,16 @@ export const signMessage = (message, privateKey) => {
 }
 
 /**
- * Verify claim subject's address against recovered address
+ * Verify identity claim subject's address against recovered address
  *
- * @param  {String}  address   Ethereum address of claim subject
- * @param  {String}  claimHash sha3 hash of claim message
+ * @param  {String}  address   Ethereum address of identity claim subject
+ * @param  {String}  claimHash sha3 hash of identity claim message
  * @param  {String}  signature Ethereum RPC signature object
  * @return {Boolean}           Verified
  */
-export const verifyClaim = (address, claimHash, signature) => {
-  // recover address from claim
-  const recoveredAddress = recoverAddressFromClaim(claimHash, signature)
+export const verifyIdentityClaim = (address, claimHash, signature) => {
+  // recover address from identity claim
+  const recoveredAddress = recoverAddressFromIdentityClaim(claimHash, signature)
 
   // verify recovered address equals given address
   const verified = recoveredAddress === address
