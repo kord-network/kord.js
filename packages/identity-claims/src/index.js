@@ -26,6 +26,7 @@ import {
   fromRpcSig,
   pubToAddress,
   sha3,
+  toBuffer,
   toChecksumAddress,
   toRpcSig,
 } from 'ethereumjs-util'
@@ -54,6 +55,56 @@ export const createIdentityClaimObject = (
     },
     extraData
   )
+}
+
+/**
+ * Create a valid META Identity Claim object to add to META Claims index
+ *
+ * @param  {String} claimMessage            Raw claim value
+ * @param  {Object} claimService            Claim service configuration object
+ * @param  {String} claimService.id         META Identity `id` of claim service (issuer)
+ * @param  {String} claimService.privateKey Private key of claim service (issuer)
+ * @param  {String} claimService.property   Property of identity claim
+ * @param  {String} subject                 META Identity `id` of claim subject
+ * @return {Object}                         Verified identity claim object
+ */
+export const createVerifiedIdentityClaimObject = (
+  claimMessage,
+  claimService,
+  subject
+) => {
+  // generate verified claim buffer
+  const verifiedClaimBuffer = sha3(
+    Buffer.concat([
+      toBuffer(claimService.id),
+      toBuffer(subject),
+      toBuffer(claimService.property),
+      toBuffer(claimMessage),
+    ])
+  )
+
+  // generate ECDSA signature of verified claim buffer using the claim service private key
+  const signatureObject = ecsign(
+    verifiedClaimBuffer,
+    Buffer.from(claimService.privateKey, 'hex')
+  )
+
+  // convert ECDSA signature buffer to hex value
+  // TODO - could we do `...signatureObject` ??
+  const signature = toRpcSig(
+    signatureObject.v,
+    signatureObject.r,
+    signatureObject.s
+  )
+
+  // return verified identity claim object
+  return {
+    claim: claimMessage,
+    issuer: claimService.id,
+    property: claimService.property,
+    signature: signature,
+    subject: subject,
+  }
 }
 
 /**
