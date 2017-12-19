@@ -90,7 +90,6 @@ export const createVerifiedIdentityClaimObject = (
   )
 
   // convert ECDSA signature buffer to hex value
-  // TODO - could we do `...signatureObject` ??
   const signature = toRpcSig(
     signatureObject.v,
     signatureObject.r,
