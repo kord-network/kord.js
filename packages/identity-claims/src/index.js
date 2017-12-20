@@ -26,6 +26,7 @@ import {
   fromRpcSig,
   pubToAddress,
   sha3,
+  toBuffer,
   toChecksumAddress,
   toRpcSig,
 } from 'ethereumjs-util'
@@ -37,12 +38,14 @@ import {
  * @param  {String} account.address    Account Ethereum address
  * @param  {String} account.privateKey Account private key
  * @param  {Object} claimMessage       Raw identity claim message
+ * @param  {String} subject            META Identity `id` of subject (hash of `username`)
  * @param  {Object} extraData          Any extra properties to add to identity claim object
  * @return {Object}                    META Identity Claim object
  */
-export const createIdentityClaimObject = (
+export const createVerifiableIdentityClaimObject = (
   account,
   claimMessage,
+  subject,
   extraData = {}
 ) => {
   return Object.assign(
@@ -51,6 +54,7 @@ export const createIdentityClaimObject = (
       claimHash: bufferToHex(sha3(claimMessage)),
       claimMessage: claimMessage,
       signature: signMessage(claimMessage, account.privateKey),
+      subject: subject,
     },
     extraData
   )
@@ -78,6 +82,55 @@ export const createProfileMetaIdentityClaim = (
     property: `profile.${subProperty}`,
     signature: signMessage(claimMessage, account.privateKey),
     subject: account.address,
+  }
+}
+
+/**
+ * Create a valid META Identity Claim object to add to META Claims index
+ *
+ * @param  {String} claimMessage            Raw claim value
+ * @param  {Object} claimService            Claim service configuration object
+ * @param  {String} claimService.id         META Identity `id` of claim service (issuer)
+ * @param  {String} claimService.privateKey Private key of claim service (issuer)
+ * @param  {String} claimService.property   Property of identity claim
+ * @param  {String} subject                 META Identity `id` of claim subject
+ * @return {Object}                         Verified identity claim object
+ */
+export const createVerifiedIdentityClaimObject = (
+  claimMessage,
+  claimService,
+  subject
+) => {
+  // generate verified claim buffer
+  const verifiedClaimBuffer = sha3(
+    Buffer.concat([
+      toBuffer(claimService.id),
+      toBuffer(subject),
+      toBuffer(claimService.property),
+      toBuffer(claimMessage),
+    ])
+  )
+
+  // generate ECDSA signature of verified claim buffer using the claim service private key
+  const signatureObject = ecsign(
+    verifiedClaimBuffer,
+    Buffer.from(claimService.privateKey, 'hex')
+  )
+
+  // convert ECDSA signature buffer to hex value
+  const signature = toRpcSig(
+    signatureObject.v,
+    signatureObject.r,
+    signatureObject.s
+  )
+
+  // return verified identity claim object
+  return {
+    claim: claimMessage,
+    issuer: claimService.id,
+    property: claimService.property,
+    signature: signature,
+    subject: subject,
   }
 }
 
