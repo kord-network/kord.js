@@ -64,7 +64,7 @@ export const createIdentityClaimObject = (
  * @param  {String} account.address    Account Ethereum address
  * @param  {String} account.privateKey Account private key
  * @param  {String} claimMessage       Raw identity claim message
- * @param  {String} subProperty        ...
+ * @param  {String} subProperty        Type of profile claim contained in `claimMessage`
  * @return {Object}                    META Identity Claim object
  */
 export const createProfileMetaIdentityClaim = (
