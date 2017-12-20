@@ -38,12 +38,14 @@ import {
  * @param  {String} account.address    Account Ethereum address
  * @param  {String} account.privateKey Account private key
  * @param  {Object} claimMessage       Raw identity claim message
+ * @param  {String} subject            META Identity `id` of subject (hash of `username`)
  * @param  {Object} extraData          Any extra properties to add to identity claim object
  * @return {Object}                    META Identity Claim object
  */
-export const createIdentityClaimObject = (
+export const createVerifiableIdentityClaimObject = (
   account,
   claimMessage,
+  subject,
   extraData = {}
 ) => {
   return Object.assign(
@@ -52,6 +54,7 @@ export const createIdentityClaimObject = (
       claimHash: bufferToHex(sha3(claimMessage)),
       claimMessage: claimMessage,
       signature: signMessage(claimMessage, account.privateKey),
+      subject: subject,
     },
     extraData
   )
