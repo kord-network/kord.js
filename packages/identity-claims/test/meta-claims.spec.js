@@ -39,6 +39,34 @@ describe('@meta.js/identity-claims :: createVerifiableIdentityClaimObject', () =
   })
 })
 
+describe('@meta.js/identity-claims :: createProfileMetaIdentityClaim', () => {
+  it('Should return a valid profile META Identity Claim object', () => {
+    const account = {
+      address: '0xadE4772179087732696bE0Bc947412C6c5098Dd6',
+      privateKey:
+        'b3653a68c5953f236924ea6528137aee329d22dfcf5704efcff6a047352dd213',
+    }
+    const claimMessage = 'ray'
+    const subProperty = 'name'
+
+    const actual = metaIdentityClaims.createProfileMetaIdentityClaim(
+      account,
+      claimMessage,
+      subProperty
+    )
+    const expected = {
+      claim: claimMessage,
+      issuer: account.address,
+      property: `profile.${subProperty}`,
+      signature:
+        '0x35905458252598752ed9cc93d799d0f47b70f660da2ba95dfdc9dc4bbcdbfa370c236f73c8b1427af801bfbe3ffbf578119e6804238e5c2cc61c9afffc38052801',
+      subject: account.address,
+    }
+    
+    expect(actual).toEqual(expected)
+  })
+})
+
 describe('@meta.js/identity-claims :: createVerifiedIdentityClaimObject', () => {
   it('Should return a valid verified META Identity Claim object', () => {
     const claimMessage = 'ray.id.meta'
