@@ -88,25 +88,26 @@ export const createProfileMetaIdentityClaim = (
 /**
  * Create a valid META Identity Claim object to add to META Claims index
  *
- * @param  {String} claimMessage            Raw claim value
- * @param  {Object} claimService            Claim service configuration object
- * @param  {String} claimService.id         META Identity `id` of claim service (issuer)
- * @param  {String} claimService.privateKey Private key of claim service (issuer)
- * @param  {String} claimService.property   Property of identity claim
- * @param  {String} subject                 META Identity `id` of claim subject
- * @return {Object}                         Verified identity claim object
+ * @param  {String} claimMessage      Raw claim value
+ * @param  {Object} issuer            Claim issuer data object
+ * @param  {String} issuer.id         META Identity `id` of claim issuer
+ * @param  {String} issuer.privateKey Private key of claim issuer
+ * @param  {String} property          Property of identity claim
+ * @param  {String} subject           META Identity `id` of claim subject
+ * @return {Object}                   Verified identity claim object
  */
 export const createVerifiedIdentityClaimObject = (
   claimMessage,
-  claimService,
+  issuer,
+  property,
   subject
 ) => {
   // generate verified claim buffer
   const verifiedClaimBuffer = sha3(
     Buffer.concat([
-      toBuffer(claimService.id),
+      toBuffer(issuer.id),
       toBuffer(subject),
-      toBuffer(claimService.property),
+      toBuffer(property),
       toBuffer(claimMessage),
     ])
   )
@@ -114,7 +115,7 @@ export const createVerifiedIdentityClaimObject = (
   // generate ECDSA signature of verified claim buffer using the claim service private key
   const signatureObject = ecsign(
     verifiedClaimBuffer,
-    Buffer.from(claimService.privateKey, 'hex')
+    Buffer.from(issuer.privateKey, 'hex')
   )
 
   // convert ECDSA signature buffer to hex value
@@ -127,8 +128,8 @@ export const createVerifiedIdentityClaimObject = (
   // return verified identity claim object
   return {
     claim: claimMessage,
-    issuer: claimService.id,
-    property: claimService.property,
+    issuer: issuer.id,
+    property: property,
     signature: signature,
     subject: subject,
   }
