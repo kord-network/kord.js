@@ -19,8 +19,23 @@
  If you have any questions please contact yo@jaak.io
 */
 
-import createIdentityObject from './createIdentityObject'
-import getIdFromUsername from './getIdFromUsername'
-import getUsernameFromName from './getUsernameFromName'
+import { signMessage } from '@meta.js/identity-claims'
 
-export { createIdentityObject, getIdFromUsername, getUsernameFromName }
+/**
+ * Create a valid META Identity object to register a new META Identity
+ *
+ * @param  {Object} account            Ethereum account object
+ * @param  {String} account.address    Account Ethereum address
+ * @param  {String} account.privateKey Account private key
+ * @param  {String} username           Identity username
+ * @return {Object}                    META Identity object
+ */
+const createIdentityObject = (account, username) => {
+  return {
+    owner: account.address,
+    signature: signMessage(username, account.privateKey),
+    username: username,
+  }
+}
+
+export default createIdentityObject

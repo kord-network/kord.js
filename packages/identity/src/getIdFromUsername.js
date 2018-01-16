@@ -19,8 +19,14 @@
  If you have any questions please contact yo@jaak.io
 */
 
-import createIdentityObject from './createIdentityObject'
-import getIdFromUsername from './getIdFromUsername'
-import getUsernameFromName from './getUsernameFromName'
+import { bufferToHex, sha3 } from 'ethereumjs-util'
 
-export { createIdentityObject, getIdFromUsername, getUsernameFromName }
+/**
+ * Convert a META Identity `username` into a META Identity `id`
+ *
+ * @param  {String} username META Identity `username` string
+ * @return {String}          META Identity `id` hex
+ */
+const getIdFromUsername = username => bufferToHex(sha3(username))
+
+export default getIdFromUsername

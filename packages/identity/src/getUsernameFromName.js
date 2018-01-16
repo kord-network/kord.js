@@ -19,8 +19,17 @@
  If you have any questions please contact yo@jaak.io
 */
 
-import createIdentityObject from './createIdentityObject'
-import getIdFromUsername from './getIdFromUsername'
-import getUsernameFromName from './getUsernameFromName'
+import slugify from 'slugify'
 
-export { createIdentityObject, getIdFromUsername, getUsernameFromName }
+const META_ID_USERNAME_SUFFIX = 'id.meta'
+
+/**
+ * Get a META Identity `username` from a common name
+ *
+ * @param  {String} commonName Common name to use for META Identity username
+ * @return {String}            META Identity username
+ */
+const getUsernameFromName = commonName =>
+  `${slugify(commonName.toLowerCase())}.${META_ID_USERNAME_SUFFIX}`
+
+export default getUsernameFromName
