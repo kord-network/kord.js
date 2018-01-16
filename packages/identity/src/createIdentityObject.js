@@ -19,18 +19,23 @@
  If you have any questions please contact yo@jaak.io
 */
 
-import createProfileMetaIdentityClaim from './createProfileMetaIdentityClaim'
-import createVerifiableIdentityClaimObject from './createVerifiableIdentityClaimObject'
-import createVerifiedIdentityClaimObject from './createVerifiedIdentityClaimObject'
-import recoverAddressFromIdentityClaim from './recoverAddressFromIdentityClaim'
-import signMessage from './signMessage'
-import verifyIdentityClaim from './verifyIdentityClaim'
+import { signMessage } from '@meta.js/identity-claims'
 
-export {
-  createProfileMetaIdentityClaim,
-  createVerifiableIdentityClaimObject,
-  createVerifiedIdentityClaimObject,
-  recoverAddressFromIdentityClaim,
-  signMessage,
-  verifyIdentityClaim,
+/**
+ * Create a valid META Identity object to register a new META Identity
+ *
+ * @param  {Object} account            Ethereum account object
+ * @param  {String} account.address    Account Ethereum address
+ * @param  {String} account.privateKey Account private key
+ * @param  {String} username           Identity username
+ * @return {Object}                    META Identity object
+ */
+const createIdentityObject = (account, username) => {
+  return {
+    owner: account.address,
+    signature: signMessage(username, account.privateKey),
+    username: username,
+  }
 }
+
+export default createIdentityObject

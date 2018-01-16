@@ -19,18 +19,14 @@
  If you have any questions please contact yo@jaak.io
 */
 
-import createProfileMetaIdentityClaim from './createProfileMetaIdentityClaim'
-import createVerifiableIdentityClaimObject from './createVerifiableIdentityClaimObject'
-import createVerifiedIdentityClaimObject from './createVerifiedIdentityClaimObject'
-import recoverAddressFromIdentityClaim from './recoverAddressFromIdentityClaim'
-import signMessage from './signMessage'
-import verifyIdentityClaim from './verifyIdentityClaim'
+import { bufferToHex, sha3 } from 'ethereumjs-util'
 
-export {
-  createProfileMetaIdentityClaim,
-  createVerifiableIdentityClaimObject,
-  createVerifiedIdentityClaimObject,
-  recoverAddressFromIdentityClaim,
-  signMessage,
-  verifyIdentityClaim,
-}
+/**
+ * Convert a META Identity `username` into a META Identity `id`
+ *
+ * @param  {String} username META Identity `username` string
+ * @return {String}          META Identity `id` hex
+ */
+const getIdFromUsername = username => bufferToHex(sha3(username))
+
+export default getIdFromUsername

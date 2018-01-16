@@ -19,18 +19,17 @@
  If you have any questions please contact yo@jaak.io
 */
 
-import createProfileMetaIdentityClaim from './createProfileMetaIdentityClaim'
-import createVerifiableIdentityClaimObject from './createVerifiableIdentityClaimObject'
-import createVerifiedIdentityClaimObject from './createVerifiedIdentityClaimObject'
-import recoverAddressFromIdentityClaim from './recoverAddressFromIdentityClaim'
-import signMessage from './signMessage'
-import verifyIdentityClaim from './verifyIdentityClaim'
+import slugify from 'slugify'
 
-export {
-  createProfileMetaIdentityClaim,
-  createVerifiableIdentityClaimObject,
-  createVerifiedIdentityClaimObject,
-  recoverAddressFromIdentityClaim,
-  signMessage,
-  verifyIdentityClaim,
-}
+const META_ID_USERNAME_SUFFIX = 'id.meta'
+
+/**
+ * Get a META Identity `username` from a common name
+ *
+ * @param  {String} commonName Common name to use for META Identity username
+ * @return {String}            META Identity username
+ */
+const getUsernameFromName = commonName =>
+  `${slugify(commonName.toLowerCase())}.${META_ID_USERNAME_SUFFIX}`
+
+export default getUsernameFromName
