@@ -19,18 +19,24 @@
  If you have any questions please contact yo@jaak.io
 */
 
-import createProfileMetaIdentityClaim from './createProfileMetaIdentityClaim'
-import createVerifiableIdentityClaimObject from './createVerifiableIdentityClaimObject'
-import createVerifiedIdentityClaimObject from './createVerifiedIdentityClaimObject'
-import recoverAddressFromIdentityClaim from './recoverAddressFromIdentityClaim'
-import signMessage from './signMessage'
-import verifyIdentityClaim from './verifyIdentityClaim'
+import { recoverAddressFromIdentityClaim } from '@meta.js/identity-claims'
 
-export {
-  createProfileMetaIdentityClaim,
-  createVerifiableIdentityClaimObject,
-  createVerifiedIdentityClaimObject,
-  recoverAddressFromIdentityClaim,
-  signMessage,
-  verifyIdentityClaim,
+/**
+ * Verify identity claim subject's address against recovered address
+ *
+ * @param  {String}  address   Ethereum address of identity claim subject
+ * @param  {String}  claimHash sha3 hash of identity claim message
+ * @param  {String}  signature Ethereum RPC signature object
+ * @return {Boolean}           Verified
+ */
+const verifyIdentityClaim = (address, claimHash, signature) => {
+  // recover address from identity claim
+  const recoveredAddress = recoverAddressFromIdentityClaim(claimHash, signature)
+
+  // verify recovered address equals given address
+  const verified = recoveredAddress === address
+
+  return verified
 }
+
+export default verifyIdentityClaim
