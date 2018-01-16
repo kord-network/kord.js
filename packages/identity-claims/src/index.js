@@ -76,13 +76,15 @@ export const createProfileMetaIdentityClaim = (
   issuer,
   subProperty
 ) => {
+  const property = `profile.${subProperty}`
+
   return createVerifiedIdentityClaimObject(
     claimMessage,
     {
       id: issuer.id,
       privateKey: issuer.privateKey,
-      property: `profile.${subProperty}`,
     },
+    property,
     issuer.id
   )
 }
