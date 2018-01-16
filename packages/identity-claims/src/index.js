@@ -64,25 +64,27 @@ export const createVerifiableIdentityClaimObject = (
  * Create a valid META Identity Claim object for a profile claim
  * This is a self-issued claim, usually referencing a Swarm hash of profile data
  *
- * @param  {Object} account            Ethereum account object
- * @param  {String} account.address    Account Ethereum address
- * @param  {String} account.privateKey Account private key
- * @param  {String} claimMessage       Raw identity claim message
- * @param  {String} subProperty        Type of profile claim contained in `claimMessage`
- * @return {Object}                    META Identity Claim object
+ * @param  {String} claimMessage      Raw identity claim message
+ * @param  {Object} issuer            Claim issuer data object
+ * @param  {String} issuer.id         META Identity `id` of claim issuer
+ * @param  {String} issuer.privateKey Private key of claim issuer
+ * @param  {String} subProperty       Type of profile claim contained in `claimMessage`
+ * @return {Object}                   Verified META Identity Claim object
  */
 export const createProfileMetaIdentityClaim = (
-  account,
   claimMessage,
+  issuer,
   subProperty
 ) => {
-  return {
-    claim: claimMessage,
-    issuer: account.address,
-    property: `profile.${subProperty}`,
-    signature: signMessage(claimMessage, account.privateKey),
-    subject: account.address,
-  }
+  return createVerifiedIdentityClaimObject(
+    claimMessage,
+    {
+      id: issuer.id,
+      privateKey: issuer.privateKey,
+      property: `profile.${subProperty}`,
+    },
+    issuer.id
+  )
 }
 
 /**
