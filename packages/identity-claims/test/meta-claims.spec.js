@@ -41,28 +41,29 @@ describe('@meta.js/identity-claims :: createVerifiableIdentityClaimObject', () =
 
 describe('@meta.js/identity-claims :: createProfileMetaIdentityClaim', () => {
   it('Should return a valid profile META Identity Claim object', () => {
-    const account = {
-      address: '0xadE4772179087732696bE0Bc947412C6c5098Dd6',
+    const issuer = {
+      id: '0x9271978a0651b4e0eb61a1162c16edc3c20a23380c5861040a07ac0326693895',
       privateKey:
-        'b3653a68c5953f236924ea6528137aee329d22dfcf5704efcff6a047352dd213',
+        'a2745c04382b07fa3538b25f4f8fa3a971c11acdd7c7a16f78ef90f7bccd3fb4',
     }
-    const claimMessage = 'ray'
+    const claimMessage =
+      '193fa6016d2358bd79e53637c3f72c636c95f89e154d496ac6b04b8b49966888'
     const subProperty = 'name'
 
     const actual = metaIdentityClaims.createProfileMetaIdentityClaim(
-      account,
       claimMessage,
+      issuer,
       subProperty
     )
     const expected = {
       claim: claimMessage,
-      issuer: account.address,
+      issuer: issuer.id,
       property: `profile.${subProperty}`,
       signature:
-        '0x35905458252598752ed9cc93d799d0f47b70f660da2ba95dfdc9dc4bbcdbfa370c236f73c8b1427af801bfbe3ffbf578119e6804238e5c2cc61c9afffc38052801',
-      subject: account.address,
+        '0x244a310ddb00eb3a29551075c6ca8c8624431b551f0f02c5cb52eea9261cd29a0f2da373715494716f666f5e5bcddbe5434bc0e5895a1ff1f21df1785bf34eee00',
+      subject: issuer.id,
     }
-    
+
     expect(actual).toEqual(expected)
   })
 })
