@@ -22,6 +22,11 @@
 import * as identity from '@meta.js/identity'
 import * as identityClaims from '@meta.js/identity-claims'
 
+const config = {
+  META_ID_PROFILE_CLAIM_PREFIX: 'profile.',
+  META_ID_USERNAME_SUFFIX: '.id.meta',
+}
+
 const version = VERSION
 
-export { identity, identityClaims, version }
+export { config, identity, identityClaims, version }

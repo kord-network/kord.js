@@ -19,6 +19,7 @@
  If you have any questions please contact yo@jaak.io
 */
 
+import { config } from 'meta.js'
 import { createVerifiedIdentityClaimObject } from '@meta.js/identity-claims'
 
 /**
@@ -33,7 +34,7 @@ import { createVerifiedIdentityClaimObject } from '@meta.js/identity-claims'
  * @return {Object}                   Verified META Identity Claim object
  */
 const createProfileMetaIdentityClaim = (claimMessage, issuer, subProperty) => {
-  const property = `profile.${subProperty}`
+  const property = `${config.META_ID_PROFILE_CLAIM_PREFIX}${subProperty}`
 
   return createVerifiedIdentityClaimObject(
     claimMessage,
