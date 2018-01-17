@@ -25,7 +25,7 @@ npm install meta.js
 
 ## Usage
 
-> TODO
+[Read the documentation](/doc).
 
 ## Contributing
 
