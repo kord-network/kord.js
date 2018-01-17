@@ -1,0 +1,9 @@
+{
+  "claimHash": "0xe864f1c2c17d143cfbc1ae68f2977e0068a2b13342f12834a4184c8a31d7b84f",
+  "claimMessage": "ray.id.meta",
+  "extraData": {
+    "accessToken": "BQABMqi19NoMMXFhmpnQpm8aU_m85oKqTjgH_8BPmz2G2Vlj2TLWHQ09HAEarNml6brWGDggQj5qHSEDiNwXJPQ_NqPBtVuHL6ScipjpsxXuho6ySuWWULz2Ipaqqe74kxmiobQRS8wkHl6gPP8KIfO0TU1Q"
+  },
+  "property": "meta.id",
+  "signature": "0x34e54b455a6700fcc784302815846dc10b84834bc03f07a3d58a7af91c8ca34910d0716b735c580675edfacb164a6e2f9b14a768cb6825b73c24eee2ed59d0e601"
+}
