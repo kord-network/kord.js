@@ -28,15 +28,20 @@
     "url": "https://github.com/meta-network/meta.js/issues"
   },
   "homepage": "https://github.com/meta-network/meta.js#readme",
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "build": "rollup -c",
     "build:test": "rollup -c --environment TEST",
     "pretest": "yarn run build:test",
+    "release": "np",
     "test": "jest"
   },
   "devDependencies": {
     "buble": "^0.18.0",
     "jest": "^21.2.1",
+    "np": "^2.18.3",
     "rollup": "^0.52.1",
     "rollup-plugin-buble": "^0.18.0",
     "rollup-plugin-butternut": "^0.1.0",
