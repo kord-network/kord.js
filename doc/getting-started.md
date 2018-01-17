@@ -15,4 +15,4 @@
   console.log('🏷 Running meta.js version:', meta.version)
   ```
 
-5. Explore the [API docs](/api) for individual methods!
+5. Explore the [API docs](./api) for individual methods!

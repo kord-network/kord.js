@@ -10,6 +10,6 @@
 
 ## API
 
-- [`core`](/meta.js)
-- [`identity`](/identity)
-- [`identity-claims`](/identity-claims)
+- [`core`](./api/meta.js)
+- [`identity`](./api/identity)
+- [`identity-claims`](./api/identity-claims)
