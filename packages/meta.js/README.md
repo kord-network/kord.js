@@ -1,6 +1,6 @@
 # meta.js
 
-> META.js core
+> meta.js core
 
 ## Install
 ```
@@ -9,7 +9,9 @@ npm install meta.js
 
 ## Usage
 ```
-const meta = require('meta.js')
-import { identity } from 'meta.js'
+// ES6
 import * as meta from 'meta.js'
+
+// CommonJS
+const meta = require('meta.js')
 ```
