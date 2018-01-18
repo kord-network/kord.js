@@ -19,9 +19,8 @@
  If you have any questions please contact yo@jaak.io
 */
 
+import { config } from 'meta.js'
 import slugify from 'slugify'
-
-const META_ID_USERNAME_SUFFIX = 'id.meta'
 
 /**
  * Get a META Identity `username` from a common name
@@ -30,6 +29,6 @@ const META_ID_USERNAME_SUFFIX = 'id.meta'
  * @return {String}            META Identity username
  */
 const getUsernameFromName = commonName =>
-  `${slugify(commonName.toLowerCase())}.${META_ID_USERNAME_SUFFIX}`
+  `${slugify(commonName.toLowerCase())}${config.META_ID_USERNAME_SUFFIX}`
 
 export default getUsernameFromName
