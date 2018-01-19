@@ -15,3 +15,7 @@ import * as meta from 'meta.js'
 // CommonJS
 const meta = require('meta.js')
 ```
+
+## API
+
+- [`version`](version.md)

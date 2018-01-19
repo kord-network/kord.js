@@ -17,3 +17,10 @@ import * as identity from '@meta.js/identity'
 const { identity } = require('meta.js')
 const identity = require('@meta.js/identity')
 ```
+
+
+## API
+
+- [`createIdentityObject`](createIdentityObject.md)
+- [`getIdFromUsername`](getIdFromUsername.md)
+- [`getUsernameFromName`](getUsernameFromName.md)
