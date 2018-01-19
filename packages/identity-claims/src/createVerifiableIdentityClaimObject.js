@@ -28,7 +28,7 @@ import { signMessage } from '@meta.js/identity-claims'
  * @param  {Object} account            Ethereum account object
  * @param  {String} account.address    Account Ethereum address
  * @param  {String} account.privateKey Account private key
- * @param  {Object} claimMessage       Raw identity claim message
+ * @param  {String} claimMessage       Raw identity claim message
  * @param  {String} subject            META Identity `id` of subject (hash of `username`)
  * @param  {Object} extraData          Any extra properties to add to identity claim object
  * @return {Object}                    META Identity Claim object
@@ -39,6 +39,36 @@ const createVerifiableIdentityClaimObject = (
   subject,
   extraData = {}
 ) => {
+  if (typeof account === 'undefined' || typeof account !== 'object') {
+    throw new Error('`account` is undefined or not of type object.')
+  }
+
+  if (
+    !account.hasOwnProperty('address') ||
+    typeof account.address !== 'string'
+  ) {
+    throw new Error('`account.address` is undefined or not of type string.')
+  }
+
+  if (
+    !account.hasOwnProperty('privateKey') ||
+    typeof account.privateKey !== 'string'
+  ) {
+    throw new Error('`account.privateKey` is undefined or not of type string.')
+  }
+
+  if (typeof claimMessage === 'undefined' || typeof claimMessage !== 'string') {
+    throw new Error('`claimMessage` is undefined or not of type string.')
+  }
+
+  if (typeof subject === 'undefined' || typeof subject !== 'string') {
+    throw new Error('`subject` is undefined or not of type string.')
+  }
+
+  if (typeof extraData !== 'object') {
+    throw new Error('`extraData` must be of type object.')
+  }
+
   return Object.assign(
     {
       address: account.address,

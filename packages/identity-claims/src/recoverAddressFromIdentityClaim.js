@@ -23,6 +23,7 @@ import {
   bufferToHex,
   ecrecover,
   fromRpcSig,
+  isValidSignature,
   pubToAddress,
   toChecksumAddress,
 } from 'ethereumjs-util'
@@ -35,8 +36,16 @@ import {
  * @return {String}           Recovered Ethereum public address hex
  */
 const recoverAddressFromIdentityClaim = (claimHash, signature) => {
+  if (typeof claimHash === 'undefined' || typeof claimHash !== 'string') {
+    throw new Error('`claimHash` is undefined or not of type string.')
+  }
+
   // generate signature parameters
   const { v, r, s } = fromRpcSig(signature)
+
+  if (typeof signature === 'undefined' || !isValidSignature(v, r, s)) {
+    throw new Error('`signature` is not a valid Ethereum RPC signature.')
+  }
 
   // generate claim buffer from claim hash minus `0x` prefix
   const claimBuffer = Buffer.from(claimHash.substring(2), 'hex')

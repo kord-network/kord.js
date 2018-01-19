@@ -27,6 +27,12 @@ import { bufferToHex, sha3 } from 'ethereumjs-util'
  * @param  {String} username META Identity `username` string
  * @return {String}          META Identity `id` hex
  */
-const getIdFromUsername = username => bufferToHex(sha3(username))
+const getIdFromUsername = username => {
+  if (typeof username === 'undefined' || typeof username !== 'string') {
+    throw new Error('`username` is undefined or not of type string.')
+  }
+
+  return bufferToHex(sha3(username))
+}
 
 export default getIdFromUsername

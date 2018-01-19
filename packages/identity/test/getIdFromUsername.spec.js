@@ -12,4 +12,18 @@ describe('@meta.js/identity :: getIdFromUsername', () => {
 
     expect(actual).toEqual(expected)
   })
+
+  it('Should throw an error if username is undefined', () => {
+    const actual = () => metaIdentity.getIdFromUsername()
+
+    expect(actual).toThrow()
+  })
+
+  it('Should throw an error if username is not of type string', () => {
+    const username = { username: identity.username }
+
+    const actual = () => metaIdentity.getIdFromUsername(username)
+
+    expect(actual).toThrow()
+  })
 })
