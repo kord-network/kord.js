@@ -11,7 +11,7 @@ const isProfileClaim = claim => {
     throw new Error('`claim` is undefined or not of type object.')
   }
 
-  if (typeof claim.property === 'undefined') {
+  if (!claim.hasOwnProperty('property')) {
     throw new Error('`claim` is missing a `property` property.')
   }
 
