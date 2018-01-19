@@ -22,6 +22,7 @@
 import createProfileMetaIdentityClaim from './createProfileMetaIdentityClaim'
 import createVerifiableIdentityClaimObject from './createVerifiableIdentityClaimObject'
 import createVerifiedIdentityClaimObject from './createVerifiedIdentityClaimObject'
+import isProfileClaim from './isProfileClaim'
 import recoverAddressFromIdentityClaim from './recoverAddressFromIdentityClaim'
 import signMessage from './signMessage'
 import verifyIdentityClaim from './verifyIdentityClaim'
@@ -30,6 +31,7 @@ export {
   createProfileMetaIdentityClaim,
   createVerifiableIdentityClaimObject,
   createVerifiedIdentityClaimObject,
+  isProfileClaim,
   recoverAddressFromIdentityClaim,
   signMessage,
   verifyIdentityClaim,
