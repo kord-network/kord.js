@@ -1,6 +1,6 @@
 {
   "name": "@meta.js/identity",
-  "version": "0.0.0",
+  "version": "1.0.0-alpha",
   "description": "META Network JavaScript library - identity module",
   "main": "dist/meta-identity.js",
   "module": "dist/meta-identity.mjs",
