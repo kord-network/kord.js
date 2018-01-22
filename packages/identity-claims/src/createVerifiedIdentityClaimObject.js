@@ -38,6 +38,33 @@ const createVerifiedIdentityClaimObject = (
   property,
   subject
 ) => {
+  if (typeof claimMessage === 'undefined' || typeof claimMessage !== 'string') {
+    throw new Error('`claimMessage` is undefined or not of type string.')
+  }
+
+  if (typeof issuer === 'undefined' || typeof issuer !== 'object') {
+    throw new Error('`issuer` is undefined or not of type object.')
+  }
+
+  if (!issuer.hasOwnProperty('id') || typeof issuer.id !== 'string') {
+    throw new Error('`issuer.id` is undefined or not of type string.')
+  }
+
+  if (
+    !issuer.hasOwnProperty('privateKey') ||
+    typeof issuer.privateKey !== 'string'
+  ) {
+    throw new Error('`issuer.privateKey` is undefined or not of type string.')
+  }
+
+  if (typeof property === 'undefined' || typeof property !== 'string') {
+    throw new Error('`property` is undefined or not of type string.')
+  }
+
+  if (typeof subject === 'undefined' || typeof subject !== 'string') {
+    throw new Error('`subject` is undefined or not of type string.')
+  }
+
   // generate verified claim buffer
   const verifiedClaimBuffer = sha3(
     Buffer.concat([

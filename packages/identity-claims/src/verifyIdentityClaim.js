@@ -19,6 +19,7 @@
  If you have any questions please contact yo@jaak.io
 */
 
+import { isValidAddress } from 'ethereumjs-util'
 import { recoverAddressFromIdentityClaim } from '@meta.js/identity-claims'
 
 /**
@@ -26,10 +27,22 @@ import { recoverAddressFromIdentityClaim } from '@meta.js/identity-claims'
  *
  * @param  {String}  address   Ethereum address of identity claim subject
  * @param  {String}  claimHash sha3 hash of identity claim message
- * @param  {String}  signature Ethereum RPC signature object
+ * @param  {String}  signature Ethereum RPC signature hash
  * @return {Boolean}           Verified
  */
 const verifyIdentityClaim = (address, claimHash, signature) => {
+  if (typeof address === 'undefined' || !isValidAddress(address)) {
+    throw new Error('`address` is not a valid Ethereum public address.')
+  }
+
+  if (typeof claimHash === 'undefined' || typeof claimHash !== 'string') {
+    throw new Error('`claimHash` is undefined or not of type string.')
+  }
+
+  if (typeof signature === 'undefined' || typeof signature !== 'string') {
+    throw new Error('`signature` is undefined or not of type string.')
+  }
+
   // recover address from identity claim
   const recoveredAddress = recoverAddressFromIdentityClaim(claimHash, signature)
 

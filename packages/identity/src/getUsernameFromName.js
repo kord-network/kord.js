@@ -28,7 +28,12 @@ import slugify from 'slugify'
  * @param  {String} commonName Common name to use for META Identity username
  * @return {String}            META Identity username
  */
-const getUsernameFromName = commonName =>
-  `${slugify(commonName.toLowerCase())}${config.META_ID_USERNAME_SUFFIX}`
+const getUsernameFromName = commonName => {
+  if (typeof commonName === 'undefined' || typeof commonName !== 'string') {
+    throw new Error('`commonName` is undefined or not of type string.')
+  }
+
+  return `${slugify(commonName.toLowerCase())}${config.META_ID_USERNAME_SUFFIX}`
+}
 
 export default getUsernameFromName

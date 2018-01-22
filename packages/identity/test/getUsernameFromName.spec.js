@@ -13,4 +13,18 @@ describe('@meta.js/identity :: getUsernameFromName', () => {
 
     expect(actual).toEqual(expected)
   })
+
+  it('Should throw an error if commonName is undefined', () => {
+    const actual = () => metaIdentity.getUsernameFromName()
+
+    expect(actual).toThrow()
+  })
+
+  it('Should throw an error if commonName is not of type string', () => {
+    const commonName = { commonName: name }
+
+    const actual = () => metaIdentity.getUsernameFromName(commonName)
+
+    expect(actual).toThrow()
+  })
 })

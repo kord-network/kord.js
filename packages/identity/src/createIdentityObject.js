@@ -19,6 +19,7 @@
  If you have any questions please contact yo@jaak.io
 */
 
+import { isValidAddress } from 'ethereumjs-util'
 import { signMessage } from '@meta.js/identity-claims'
 
 /**
@@ -31,6 +32,25 @@ import { signMessage } from '@meta.js/identity-claims'
  * @return {Object}                    META Identity object
  */
 const createIdentityObject = (account, username) => {
+  if (typeof account === 'undefined' || typeof account !== 'object') {
+    throw new Error('`account` is undefined or not of type object.')
+  }
+
+  if (!account.hasOwnProperty('address') || !isValidAddress(account.address)) {
+    throw new Error('`address` is not a valid Ethereum public address.')
+  }
+
+  if (
+    !account.hasOwnProperty('privateKey') ||
+    typeof account.privateKey !== 'string'
+  ) {
+    throw new Error('`privateKey` is not a valid Ethereum private key.')
+  }
+
+  if (typeof username === 'undefined' || typeof username !== 'string') {
+    throw new Error('`username` is undefined or not of type string.')
+  }
+
   return {
     owner: account.address,
     signature: signMessage(username, account.privateKey),

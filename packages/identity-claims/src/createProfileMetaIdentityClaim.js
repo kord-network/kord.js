@@ -34,6 +34,29 @@ import { createVerifiedIdentityClaimObject } from '@meta.js/identity-claims'
  * @return {Object}                   Verified META Identity Claim object
  */
 const createProfileMetaIdentityClaim = (claimMessage, issuer, subProperty) => {
+  if (typeof claimMessage === 'undefined' || typeof claimMessage !== 'string') {
+    throw new Error('`claimMessage` is undefined or not of type string.')
+  }
+
+  if (typeof issuer === 'undefined' || typeof issuer !== 'object') {
+    throw new Error('`issuer` is undefined or not of type object.')
+  }
+
+  if (!issuer.hasOwnProperty('id') || typeof issuer.id !== 'string') {
+    throw new Error('`issuer.id` is undefined or not of type string.')
+  }
+
+  if (
+    !issuer.hasOwnProperty('privateKey') ||
+    typeof issuer.privateKey !== 'string'
+  ) {
+    throw new Error('`issuer.privateKey` is undefined or not of type string.')
+  }
+
+  if (typeof subProperty === 'undefined' || typeof subProperty !== 'string') {
+    throw new Error('`subProperty` is undefined or not of type string.')
+  }
+
   const property = `${config.META_ID_PROFILE_CLAIM_PREFIX}${subProperty}`
 
   return createVerifiedIdentityClaimObject(

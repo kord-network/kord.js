@@ -29,6 +29,14 @@ import { ecsign, sha3, toRpcSig } from 'ethereumjs-util'
  * @return {String}            ECDSA signature
  */
 const signMessage = (message, privateKey) => {
+  if (typeof message === 'undefined' || typeof message !== 'string') {
+    throw new Error('`message` is undefined or not of type string.')
+  }
+
+  if (typeof privateKey === 'undefined' || typeof privateKey !== 'string') {
+    throw new Error('`privateKey` is undefined or not of type string.')
+  }
+
   // convert privateKey hex string to Buffer
   const bufferPrivateKey = Buffer.from(privateKey, 'hex')
 

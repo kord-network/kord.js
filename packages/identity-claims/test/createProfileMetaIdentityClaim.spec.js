@@ -24,4 +24,109 @@ describe('@meta.js/identity-claims :: createProfileMetaIdentityClaim', () => {
 
     expect(actual).toEqual(expected)
   })
+
+  it('Should throw an error if claimMessage is undefined', () => {
+    const actual = () => metaIdentityClaims.createProfileMetaIdentityClaim()
+
+    expect(actual).toThrow()
+  })
+
+  it('Should throw an error if claimMessage is not of type string', () => {
+    const { claimMessage, subProperty } = profileClaim
+
+    const actual = () =>
+      metaIdentityClaims.createProfileMetaIdentityClaim(
+        { claimMessage },
+        issuer,
+        subProperty
+      )
+
+    expect(actual).toThrow()
+  })
+
+  it('Should throw an error if issuer is undefined', () => {
+    const { claimMessage } = profileClaim
+    const actual = () =>
+      metaIdentityClaims.createProfileMetaIdentityClaim(claimMessage)
+
+    expect(actual).toThrow()
+  })
+
+  it('Should throw an error if issuer is not of type object', () => {
+    const { claimMessage, subProperty } = profileClaim
+
+    const actual = () =>
+      metaIdentityClaims.createProfileMetaIdentityClaim(
+        claimMessage,
+        'issuer',
+        subProperty
+      )
+
+    expect(actual).toThrow()
+  })
+
+  it('Should throw an error if issuer id is not of type string', () => {
+    issuer.id = { id: issuer.id }
+
+    const actual = () =>
+      metaIdentityClaims.createProfileMetaIdentityClaim(claimMessage, issuer)
+
+    expect(actual).toThrow()
+  })
+
+  it('Should throw an error if issuer id is undefined', () => {
+    delete issuer.id
+
+    const actual = () =>
+      metaIdentityClaims.createProfileMetaIdentityClaim(claimMessage, issuer)
+
+    expect(actual).toThrow()
+  })
+
+  it('Should throw an error if issuer privateKey is not of type string', () => {
+    issuer.privateKey = { privateKey: issuer.privateKey }
+
+    const actual = () =>
+      metaIdentityClaims.createProfileMetaIdentityClaim(claimMessage, issuer)
+
+    expect(actual).toThrow()
+  })
+
+  it('Should throw an error if issuer privateKey is undefined', () => {
+    delete issuer.privateKey
+
+    const actual = () =>
+      metaIdentityClaims.createProfileMetaIdentityClaim(claimMessage, issuer)
+
+    expect(actual).toThrow()
+  })
+
+  it('Should throw an error if subProperty is not of type string', () => {
+    const { claimMessage, subProperty } = profileClaim
+
+    const actual = () =>
+      metaIdentityClaims.createProfileMetaIdentityClaim(claimMessage, issuer, {
+        subProperty,
+      })
+
+    expect(actual).toThrow()
+  })
+
+  it('Should throw an error if subProperty is undefined', () => {
+    const actual = () =>
+      metaIdentityClaims.createProfileMetaIdentityClaim(claimMessage, issuer)
+
+    expect(actual).toThrow()
+  })
+
+  it('Should throw an error if subProperty is not of type string', () => {
+    const { claimMessage, subProperty } = profileClaim
+
+    const actual = () =>
+      metaIdentityClaims.createProfileMetaIdentityClaim(claimMessage, issuer, {
+        subProperty,
+      })
+
+    expect(actual).toThrow()
+  })
 })
