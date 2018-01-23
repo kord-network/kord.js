@@ -38,6 +38,10 @@
     "release": "np",
     "test": "jest"
   },
+  "dependencies": {
+    "@meta/identity-claims": "^1.0.0-alpha",
+    "@meta/shared": "^1.0.0-alpha"
+  },
   "devDependencies": {
     "buble": "^0.18.0",
     "jest": "^21.2.1",

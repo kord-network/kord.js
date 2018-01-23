@@ -38,13 +38,17 @@
     "release": "np",
     "test": "jest"
   },
+  "dependencies": {
+    "@meta/identity": "^1.0.0-alpha",
+    "@meta/identity-claims": "^1.0.0-alpha",
+    "@meta/shared": "^1.0.0-alpha"
+  },
   "devDependencies": {
     "buble": "^0.18.0",
     "jest": "^21.2.1",
     "np": "^2.18.3",
     "rollup": "^0.52.1",
     "rollup-plugin-buble": "^0.18.0",
-    "rollup-plugin-butternut": "^0.1.0",
-    "rollup-plugin-replace": "^2.0.0"
+    "rollup-plugin-butternut": "^0.1.0"
   }
 }

@@ -7,9 +7,15 @@ const isTest = process.env.TEST
 
 export default {
   input: './src/index.js',
-  external: ['@meta.js/claims', 'ethereumjs-util', 'slugify'],
+  external: [
+    '@meta.js/identity-claims',
+    '@meta.js/shared',
+    'ethereumjs-util',
+    'slugify',
+  ],
   globals: {
-    '@meta.js/claims': 'claims',
+    '@meta.js/identity-claims': 'identityClaims',
+    '@meta.js/shared': 'shared',
     'ethereumjs-util': 'ethereumjsUtil',
     slugify: 'slugify',
   },
