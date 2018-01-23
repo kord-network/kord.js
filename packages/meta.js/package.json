@@ -39,9 +39,9 @@
     "test": "jest"
   },
   "dependencies": {
-    "@meta/identity": "^1.0.0-alpha",
-    "@meta/identity-claims": "^1.0.0-alpha",
-    "@meta/shared": "^1.0.0-alpha"
+    "@meta.js/identity": "^1.0.0-alpha",
+    "@meta.js/identity-claims": "^1.0.0-alpha",
+    "@meta.js/shared": "^1.0.0-alpha"
   },
   "devDependencies": {
     "buble": "^0.18.0",
