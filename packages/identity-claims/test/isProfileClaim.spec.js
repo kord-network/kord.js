@@ -1,5 +1,4 @@
 const metaIdentityClaims = require('../dist/meta-identity-claims')
-const { config } = require('../../meta.js/dist/meta')
 
 const verifiedClaim = require('./fixtures/verified-claim.json')
 const verifiedProfileClaim = require('./fixtures/verified-profile-claim.json')

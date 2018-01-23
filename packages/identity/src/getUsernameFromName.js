@@ -19,7 +19,7 @@
  If you have any questions please contact yo@jaak.io
 */
 
-import { config } from 'meta.js'
+import { META_ID_USERNAME_SUFFIX } from '@meta.js/shared'
 import slugify from 'slugify'
 
 /**
@@ -33,7 +33,7 @@ const getUsernameFromName = commonName => {
     throw new Error('`commonName` is undefined or not of type string.')
   }
 
-  return `${slugify(commonName.toLowerCase())}${config.META_ID_USERNAME_SUFFIX}`
+  return `${slugify(commonName.toLowerCase())}${META_ID_USERNAME_SUFFIX}`
 }
 
 export default getUsernameFromName

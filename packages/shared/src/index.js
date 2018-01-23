@@ -19,24 +19,11 @@
  If you have any questions please contact yo@jaak.io
 */
 
-import { META_ID_PROFILE_CLAIM_PREFIX } from '@meta.js/shared'
+import {
+  META_ID_PROFILE_CLAIM_PREFIX,
+  META_ID_USERNAME_SUFFIX,
+} from './constants.js'
 
-/**
- * Check if a META Identity Claim is a profile claim
- *
- * @param  {Object}  claim META Identity Claim object
- * @return {Boolean}       Profile claim boolean
- */
-const isProfileClaim = claim => {
-  if (typeof claim === 'undefined' || typeof claim !== 'object') {
-    throw new Error('`claim` is undefined or not of type object.')
-  }
+const version = VERSION
 
-  if (!claim.hasOwnProperty('property')) {
-    throw new Error('`claim` is missing a `property` property.')
-  }
-
-  return claim.property.startsWith(`${META_ID_PROFILE_CLAIM_PREFIX}`)
-}
-
-export default isProfileClaim
+export { META_ID_PROFILE_CLAIM_PREFIX, META_ID_USERNAME_SUFFIX, version }

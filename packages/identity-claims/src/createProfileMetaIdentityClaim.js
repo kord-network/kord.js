@@ -19,7 +19,7 @@
  If you have any questions please contact yo@jaak.io
 */
 
-import { config } from 'meta.js'
+import { META_ID_PROFILE_CLAIM_PREFIX } from '@meta.js/shared'
 import { createVerifiedIdentityClaimObject } from '@meta.js/identity-claims'
 
 /**
@@ -57,7 +57,7 @@ const createProfileMetaIdentityClaim = (claimMessage, issuer, subProperty) => {
     throw new Error('`subProperty` is undefined or not of type string.')
   }
 
-  const property = `${config.META_ID_PROFILE_CLAIM_PREFIX}${subProperty}`
+  const property = `${META_ID_PROFILE_CLAIM_PREFIX}${subProperty}`
 
   return createVerifiedIdentityClaimObject(
     claimMessage,

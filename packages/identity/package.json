@@ -1,6 +1,6 @@
 {
   "name": "@meta.js/identity",
-  "version": "0.0.0",
+  "version": "1.0.0-alpha",
   "description": "META Network JavaScript library - identity module",
   "main": "dist/meta-identity.js",
   "module": "dist/meta-identity.mjs",
@@ -37,6 +37,10 @@
     "pretest": "yarn run build:test",
     "release": "np",
     "test": "jest"
+  },
+  "dependencies": {
+    "@meta/identity-claims": "^1.0.0-alpha",
+    "@meta/shared": "^1.0.0-alpha"
   },
   "devDependencies": {
     "buble": "^0.18.0",

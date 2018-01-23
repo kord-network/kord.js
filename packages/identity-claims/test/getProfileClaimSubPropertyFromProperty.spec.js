@@ -1,12 +1,12 @@
 const metaIdentityClaims = require('../dist/meta-identity-claims')
-const { config } = require('../../meta.js/dist/meta')
+const metaShared = require('../../shared/dist/meta-shared')
 
 const profileClaim = require('./fixtures/profile-claim.json')
 
 describe('@meta.js/identity-claims :: getProfileClaimSubPropertyFromProperty', () => {
   it('Should return the sub-property of META Identity Profile Claim property', () => {
     const { subProperty } = profileClaim
-    const property = `${config.META_ID_PROFILE_CLAIM_PREFIX}${subProperty}`
+    const property = `${metaShared.META_ID_PROFILE_CLAIM_PREFIX}${subProperty}`
 
     const actual = metaIdentityClaims.getProfileClaimSubPropertyFromProperty(
       property
@@ -37,7 +37,7 @@ describe('@meta.js/identity-claims :: getProfileClaimSubPropertyFromProperty', (
   it('Should throw an error if property is not of type string', () => {
     const { subProperty } = profileClaim
     const property = {
-      property: `${config.META_ID_PROFILE_CLAIM_PREFIX}${subProperty}`,
+      property: `${metaShared.META_ID_PROFILE_CLAIM_PREFIX}${subProperty}`,
     }
 
     const actual = () =>

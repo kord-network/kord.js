@@ -21,12 +21,8 @@
 
 import * as identity from '@meta.js/identity'
 import * as identityClaims from '@meta.js/identity-claims'
+import * as shared from '@meta.js/shared'
 
-const config = {
-  META_ID_PROFILE_CLAIM_PREFIX: 'profile.',
-  META_ID_USERNAME_SUFFIX: '.id.meta',
-}
+const version = shared.version
 
-const version = VERSION
-
-export { config, identity, identityClaims, version }
+export { identity, identityClaims, shared, version }
