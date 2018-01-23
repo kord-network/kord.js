@@ -1,6 +1,6 @@
 {
   "name": "@meta.js/identity-claims",
-  "version": "1.0.0-alpha.2",
+  "version": "1.0.0-alpha.3",
   "description": "META Network JavaScript library - identity claims module",
   "main": "dist/meta-identity-claims.js",
   "module": "dist/meta-identity-claims.mjs",
@@ -39,6 +39,7 @@
     "test": "jest"
   },
   "dependencies": {
+    "ethereumjs-util": "^5.1.2",
     "@meta.js/shared": "^1.0.0-alpha"
   },
   "devDependencies": {
@@ -48,8 +49,5 @@
     "rollup": "^0.52.1",
     "rollup-plugin-buble": "^0.18.0",
     "rollup-plugin-butternut": "^0.1.0"
-  },
-  "dependencies": {
-    "ethereumjs-util": "^5.1.2"
   }
 }

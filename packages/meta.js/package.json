@@ -1,6 +1,6 @@
 {
   "name": "meta.js",
-  "version": "1.0.0-alpha.2",
+  "version": "1.0.0-alpha.3",
   "description": "META Network JavaScript library",
   "main": "dist/meta.js",
   "module": "dist/meta.mjs",
