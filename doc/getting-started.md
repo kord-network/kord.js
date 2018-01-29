@@ -10,9 +10,9 @@
   import * as meta from 'meta.js'
   ```
 
-4. Check everything is working:
+3. Check everything is working:
   ```js
   console.log('🏷 Running meta.js version:', meta.version)
   ```
 
-5. Explore the [API docs](./api) for individual methods!
+4. Explore the [API docs](./api) for individual methods!
