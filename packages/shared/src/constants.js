@@ -20,6 +20,13 @@
 */
 
 /**
+ * META Identity Follow Claim `property`
+ *
+ * @type {String}
+ */
+export const META_ID_FOLLOW_CLAIM_PROPERTY = 'follow.id'
+
+/**
  * META Identity Profile Claim `property` prefix
  *
  * @type {String}
