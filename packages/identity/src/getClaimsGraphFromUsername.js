@@ -19,14 +19,20 @@
  If you have any questions please contact yo@jaak.io
 */
 
-import createIdentityObject from './createIdentityObject'
-import getClaimsGraphFromUsername from './getClaimsGraphFromUsername'
-import getIdFromUsername from './getIdFromUsername'
-import getUsernameFromName from './getUsernameFromName'
+import { META_ID_USERNAME_SUFFIX } from '@meta.js/shared'
 
-export {
-  createIdentityObject,
-  getClaimsGraphFromUsername,
-  getIdFromUsername,
-  getUsernameFromName,
+/**
+ * Get a META Claims Graph from a `username`
+ *
+ * @param  {String} username META Identity username
+ * @return {String}          META Claims Graph name
+ */
+const getClaimsGraphFromUsername = username => {
+  if (typeof username === 'undefined' || typeof username !== 'string') {
+    throw new Error('`username` is undefined or not of type string.')
+  }
+
+  return `${username}${META_ID_USERNAME_SUFFIX}`
 }
+
+export default getClaimsGraphFromUsername
