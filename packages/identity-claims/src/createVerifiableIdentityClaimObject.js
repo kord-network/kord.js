@@ -29,6 +29,7 @@ import { signMessage } from '@meta.js/identity-claims'
  * @param  {String} account.address    Account Ethereum address
  * @param  {String} account.privateKey Account private key
  * @param  {String} claimMessage       Raw identity claim message
+ * @param  {String} graph              META Claims Graph name
  * @param  {String} subject            META Identity `id` of subject (hash of `username`)
  * @param  {Object} extraData          Any extra properties to add to identity claim object
  * @return {Object}                    META Identity Claim object
@@ -36,6 +37,7 @@ import { signMessage } from '@meta.js/identity-claims'
 const createVerifiableIdentityClaimObject = (
   account,
   claimMessage,
+  graph,
   subject,
   extraData = {}
 ) => {
@@ -61,6 +63,10 @@ const createVerifiableIdentityClaimObject = (
     throw new Error('`claimMessage` is undefined or not of type string.')
   }
 
+  if (typeof graph === 'undefined' || typeof graph !== 'string') {
+    throw new Error('`graph` is undefined or not of type string.')
+  }
+
   if (typeof subject === 'undefined' || typeof subject !== 'string') {
     throw new Error('`subject` is undefined or not of type string.')
   }
@@ -74,6 +80,7 @@ const createVerifiableIdentityClaimObject = (
       address: account.address,
       claimHash: bufferToHex(sha3(claimMessage)),
       claimMessage: claimMessage,
+      graph: graph,
       signature: signMessage(claimMessage, account.privateKey),
       subject: subject,
     },
