@@ -27,15 +27,25 @@ import { createVerifiedIdentityClaimObject } from '@meta.js/identity-claims'
  * This is a self-issued claim, usually referencing a Swarm hash of profile data
  *
  * @param  {String} claimMessage      Raw identity claim message
+ * @param  {String} graph             META Claims Graph name
  * @param  {Object} issuer            Claim issuer data object
  * @param  {String} issuer.id         META Identity `id` of claim issuer
  * @param  {String} issuer.privateKey Private key of claim issuer
  * @param  {String} subProperty       Type of profile claim contained in `claimMessage`
  * @return {Object}                   Verified META Identity Claim object
  */
-const createProfileMetaIdentityClaim = (claimMessage, issuer, subProperty) => {
+const createProfileMetaIdentityClaim = (
+  claimMessage,
+  graph,
+  issuer,
+  subProperty
+) => {
   if (typeof claimMessage === 'undefined' || typeof claimMessage !== 'string') {
     throw new Error('`claimMessage` is undefined or not of type string.')
+  }
+
+  if (typeof graph === 'undefined' || typeof graph !== 'string') {
+    throw new Error('`graph` is undefined or not of type string.')
   }
 
   if (typeof issuer === 'undefined' || typeof issuer !== 'object') {
@@ -61,6 +71,7 @@ const createProfileMetaIdentityClaim = (claimMessage, issuer, subProperty) => {
 
   return createVerifiedIdentityClaimObject(
     claimMessage,
+    graph,
     {
       id: issuer.id,
       privateKey: issuer.privateKey,
