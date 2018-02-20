@@ -1,6 +1,6 @@
 {
   "name": "@meta.js/identity-claims",
-  "version": "1.0.0-alpha.3",
+  "version": "1.0.0-beta.0",
   "description": "META Network JavaScript library - identity claims module",
   "main": "dist/meta-identity-claims.js",
   "module": "dist/meta-identity-claims.mjs",
