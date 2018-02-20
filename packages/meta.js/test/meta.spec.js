@@ -18,3 +18,11 @@ describe('meta.js :: @meta.js/identity', () => {
     expect(actual).toBeDefined()
   })
 })
+
+describe('meta.js :: @meta.js/shared', () => {
+  it('Should export @meta.js/shared module', () => {
+    const actual = meta.shared
+
+    expect(actual).toBeDefined()
+  })
+})
