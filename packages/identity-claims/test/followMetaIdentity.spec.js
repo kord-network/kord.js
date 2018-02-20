@@ -1,5 +1,6 @@
 const metaIdentityClaims = require('../dist/meta-identity-claims')
 
+const claim = require('./fixtures/claim.json')
 const followClaim = require('./fixtures/follow-claim.json')
 const issuer = require('./fixtures/issuer.json')
 const subject = require('./fixtures/subject.json')
@@ -12,12 +13,14 @@ describe('@meta.js/identity-claims :: followMetaIdentity', () => {
 
     const actual = metaIdentityClaims.followMetaIdentity(
       [verifiedClaim],
+      claim.graph,
       issuer,
       subject.id
     )
 
     const expected = {
       claim: subject.id,
+      graph: claim.graph,
       issuer: issuer.id,
       property: followClaim.property,
       signature: verifiedFollowClaim.signature,
@@ -31,7 +34,12 @@ describe('@meta.js/identity-claims :: followMetaIdentity', () => {
     delete verifiedClaim.issuerAddress
 
     const actual = () =>
-      metaIdentityClaims.followMetaIdentity([verifiedClaim], issuer, subject.id)
+      metaIdentityClaims.followMetaIdentity(
+        [verifiedClaim],
+        claim.graph,
+        issuer,
+        subject.id
+      )
 
     expect(actual).toThrow()
   })
@@ -48,15 +56,31 @@ describe('@meta.js/identity-claims :: followMetaIdentity', () => {
     expect(actual).toThrow()
   })
 
-  it('Should throw an error if issuer is undefined', () => {
+  it('Should throw an error if graph is undefined', () => {
     const actual = () => metaIdentityClaims.followMetaIdentity([verifiedClaim])
+
+    expect(actual).toThrow()
+  })
+
+  it('Should throw an error if graph is not of type string', () => {
+    const actual = () =>
+      metaIdentityClaims.followMetaIdentity(verifiedClaim, [claim.graph])
+
+    expect(actual).toThrow()
+  })
+
+  it('Should throw an error if issuer is undefined', () => {
+    const actual = () =>
+      metaIdentityClaims.followMetaIdentity([verifiedClaim], claim.graph)
 
     expect(actual).toThrow()
   })
 
   it('Should throw an error if issuer is not of type object', () => {
     const actual = () =>
-      metaIdentityClaims.followMetaIdentity([verifiedClaim], [issuer])
+      metaIdentityClaims.followMetaIdentity([verifiedClaim], claim.graph, [
+        issuer,
+      ])
 
     expect(actual).toThrow()
   })
@@ -65,7 +89,11 @@ describe('@meta.js/identity-claims :: followMetaIdentity', () => {
     issuer.id = { id: issuer.id }
 
     const actual = () =>
-      metaIdentityClaims.followMetaIdentity([verifiedClaim], issuer)
+      metaIdentityClaims.followMetaIdentity(
+        [verifiedClaim],
+        claim.graph,
+        issuer
+      )
 
     expect(actual).toThrow()
   })
@@ -74,7 +102,11 @@ describe('@meta.js/identity-claims :: followMetaIdentity', () => {
     delete issuer.id
 
     const actual = () =>
-      metaIdentityClaims.followMetaIdentity([verifiedClaim], issuer)
+      metaIdentityClaims.followMetaIdentity(
+        [verifiedClaim],
+        claim.graph,
+        issuer
+      )
 
     expect(actual).toThrow()
   })
@@ -83,7 +115,11 @@ describe('@meta.js/identity-claims :: followMetaIdentity', () => {
     issuer.privateKey = { privateKey: issuer.privateKey }
 
     const actual = () =>
-      metaIdentityClaims.followMetaIdentity([verifiedClaim], issuer)
+      metaIdentityClaims.followMetaIdentity(
+        [verifiedClaim],
+        claim.graph,
+        issuer
+      )
 
     expect(actual).toThrow()
   })
@@ -92,23 +128,36 @@ describe('@meta.js/identity-claims :: followMetaIdentity', () => {
     delete issuer.privateKey
 
     const actual = () =>
-      metaIdentityClaims.followMetaIdentity([verifiedClaim], issuer)
+      metaIdentityClaims.followMetaIdentity(
+        [verifiedClaim],
+        claim.graph,
+        issuer
+      )
 
     expect(actual).toThrow()
   })
 
   it('Should throw an error if subject is undefined', () => {
     const actual = () =>
-      metaIdentityClaims.followMetaIdentity([verifiedClaim], issuer)
+      metaIdentityClaims.followMetaIdentity(
+        [verifiedClaim],
+        claim.graph,
+        issuer
+      )
 
     expect(actual).toThrow()
   })
 
   it('Should throw an error if subject is not of type string', () => {
     const actual = () =>
-      metaIdentityClaims.followMetaIdentity([verifiedClaim], issuer, {
-        id: subject.id,
-      })
+      metaIdentityClaims.followMetaIdentity(
+        [verifiedClaim],
+        claim.graph,
+        issuer,
+        {
+          id: subject.id,
+        }
+      )
 
     expect(actual).toThrow()
   })

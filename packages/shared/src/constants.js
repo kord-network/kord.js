@@ -38,4 +38,4 @@ export const META_ID_PROFILE_CLAIM_PREFIX = 'profile.'
  *
  * @type {String}
  */
-export const META_ID_USERNAME_SUFFIX = '.id.meta'
+export const META_ID_USERNAME_SUFFIX = '.meta'

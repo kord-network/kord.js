@@ -32,15 +32,20 @@ import { META_ID_FOLLOW_CLAIM_PROPERTY } from '@meta.js/shared'
  * made about another META ID
  *
  * @param  {Array}  claims            Set of META Identity Claims to verify
+ * @param  {Object} graph             META Claims Graph name
  * @param  {Object} issuer            META Identity initiating the follow claim
  * @param  {String} issuer.id         META Identity `id` of claim issuer
  * @param  {String} issuer.privateKey Private key of claim issuer
  * @param  {String} subject           META Identity `id` receiving the follow claim
  * @return {Object}                   Verified META Identity Follow Claim
  */
-const followMetaIdentity = (claims, issuer, subject) => {
+const followMetaIdentity = (claims, graph, issuer, subject) => {
   if (typeof claims === 'undefined' || !Array.isArray(claims)) {
     throw new Error('`claims` is undefined or not an array.')
+  }
+
+  if (typeof graph === 'undefined' || typeof graph !== 'string') {
+    throw new Error('`graph` is undefined or not of type string.')
   }
 
   if (typeof issuer === 'undefined' || typeof issuer !== 'object') {
@@ -88,6 +93,7 @@ const followMetaIdentity = (claims, issuer, subject) => {
 
   return createVerifiedIdentityClaimObject(
     claimMessage,
+    graph,
     issuer,
     property,
     subject

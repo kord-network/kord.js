@@ -9,6 +9,7 @@ describe('@meta.js/identity-claims :: createVerifiableIdentityClaimObject', () =
     const actual = metaIdentityClaims.createVerifiableIdentityClaimObject(
       account,
       claim.claimMessage,
+      claim.graph,
       subject.id,
       claim.extraData
     )
@@ -17,6 +18,7 @@ describe('@meta.js/identity-claims :: createVerifiableIdentityClaimObject', () =
       address: account.address,
       claimHash: claim.claimHash,
       claimMessage: claim.claimMessage,
+      graph: claim.graph,
       signature: claim.signature,
       subject: subject.id,
       accessToken: claim.extraData.accessToken,
@@ -44,11 +46,33 @@ describe('@meta.js/identity-claims :: createVerifiableIdentityClaimObject', () =
     expect(actual).toThrow()
   })
 
-  it('Should throw an error if subject is undefined', () => {
+  it('Should throw an error if graph is undefined', () => {
     const actual = () =>
       metaIdentityClaims.createVerifiableIdentityClaimObject(
         account,
         claim.claimMessage
+      )
+
+    expect(actual).toThrow()
+  })
+
+  it('Should throw an error if graph is not of type string', () => {
+    const actual = () =>
+      metaIdentityClaims.createVerifiableIdentityClaimObject(
+        account,
+        claim.claimMessage,
+        { graph: claim.graph }
+      )
+
+    expect(actual).toThrow()
+  })
+
+  it('Should throw an error if subject is undefined', () => {
+    const actual = () =>
+      metaIdentityClaims.createVerifiableIdentityClaimObject(
+        account,
+        claim.claimMessage,
+        claim.graph
       )
 
     expect(actual).toThrow()
@@ -59,6 +83,7 @@ describe('@meta.js/identity-claims :: createVerifiableIdentityClaimObject', () =
       metaIdentityClaims.createVerifiableIdentityClaimObject(
         account,
         claim.claimMessage,
+        claim.graph,
         { subject: subject.id }
       )
 
@@ -70,6 +95,7 @@ describe('@meta.js/identity-claims :: createVerifiableIdentityClaimObject', () =
       metaIdentityClaims.createVerifiableIdentityClaimObject(
         account,
         claim.claimMessage,
+        claim.graph,
         subject.id,
         claim.extraData.accessToken
       )

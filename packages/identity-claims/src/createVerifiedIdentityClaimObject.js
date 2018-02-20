@@ -22,9 +22,10 @@
 import { ecsign, sha3, toBuffer, toRpcSig } from 'ethereumjs-util'
 
 /**
- * Create a valid META Identity Claim object to add to META Claims index
+ * Create a valid META Identity Claim object to add to a META Claims Graph
  *
  * @param  {String} claimMessage      Raw claim value
+ * @param  {Object} graph             META Claims Graph name
  * @param  {Object} issuer            Claim issuer data object
  * @param  {String} issuer.id         META Identity `id` of claim issuer
  * @param  {String} issuer.privateKey Private key of claim issuer
@@ -34,12 +35,17 @@ import { ecsign, sha3, toBuffer, toRpcSig } from 'ethereumjs-util'
  */
 const createVerifiedIdentityClaimObject = (
   claimMessage,
+  graph,
   issuer,
   property,
   subject
 ) => {
   if (typeof claimMessage === 'undefined' || typeof claimMessage !== 'string') {
     throw new Error('`claimMessage` is undefined or not of type string.')
+  }
+
+  if (typeof graph === 'undefined' || typeof graph !== 'string') {
+    throw new Error('`graph` is undefined or not of type string.')
   }
 
   if (typeof issuer === 'undefined' || typeof issuer !== 'object') {
@@ -91,6 +97,7 @@ const createVerifiedIdentityClaimObject = (
   // return verified identity claim object
   return {
     claim: claimMessage,
+    graph: graph,
     issuer: issuer.id,
     property: property,
     signature: signature,

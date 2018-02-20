@@ -19,20 +19,20 @@
  If you have any questions please contact yo@jaak.io
 */
 
-import slugify from 'slugify'
+import { META_ID_USERNAME_SUFFIX } from '@meta.js/shared'
 
 /**
- * Get a META Identity `username` from a common name
+ * Get a META Claims Graph from a `username`
  *
- * @param  {String} commonName Common name to use for META Identity username
- * @return {String}            META Identity username
+ * @param  {String} username META Identity username
+ * @return {String}          META Claims Graph name
  */
-const getUsernameFromName = commonName => {
-  if (typeof commonName === 'undefined' || typeof commonName !== 'string') {
-    throw new Error('`commonName` is undefined or not of type string.')
+const getClaimsGraphFromUsername = username => {
+  if (typeof username === 'undefined' || typeof username !== 'string') {
+    throw new Error('`username` is undefined or not of type string.')
   }
 
-  return slugify(commonName.toLowerCase())
+  return `${username}${META_ID_USERNAME_SUFFIX}`
 }
 
-export default getUsernameFromName
+export default getClaimsGraphFromUsername

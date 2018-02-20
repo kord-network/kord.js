@@ -20,7 +20,13 @@
 */
 
 import createIdentityObject from './createIdentityObject'
+import getClaimsGraphFromUsername from './getClaimsGraphFromUsername'
 import getIdFromUsername from './getIdFromUsername'
 import getUsernameFromName from './getUsernameFromName'
 
-export { createIdentityObject, getIdFromUsername, getUsernameFromName }
+export {
+  createIdentityObject,
+  getClaimsGraphFromUsername,
+  getIdFromUsername,
+  getUsernameFromName,
+}
