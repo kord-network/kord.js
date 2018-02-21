@@ -1,6 +1,6 @@
 {
   "name": "@meta.js/identity",
-  "version": "1.0.0-beta.0",
+  "version": "1.0.0-beta.1",
   "description": "META Network JavaScript library - identity module",
   "main": "dist/meta-identity.js",
   "module": "dist/meta-identity.mjs",
@@ -39,8 +39,8 @@
     "test": "jest"
   },
   "dependencies": {
-    "@meta.js/identity-claims": "^1.0.0-alpha",
-    "@meta.js/shared": "^1.0.0-alpha",
+    "@meta.js/identity-claims": "^1.0.0-beta",
+    "@meta.js/shared": "^1.0.0-beta",
     "ethereumjs-util": "^5.1.2",
     "slugify": "^1.2.6"
   },

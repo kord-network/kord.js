@@ -1,6 +1,6 @@
 {
   "name": "@meta.js/shared",
-  "version": "1.0.0-beta.0",
+  "version": "1.0.0-beta.1",
   "description": "META Network JavaScript library - shared module",
   "main": "dist/meta-shared.js",
   "module": "dist/meta-shared.mjs",

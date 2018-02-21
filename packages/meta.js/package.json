@@ -1,6 +1,6 @@
 {
   "name": "meta.js",
-  "version": "1.0.0-beta.0",
+  "version": "1.0.0-beta.1",
   "description": "META Network JavaScript library",
   "main": "dist/meta.js",
   "module": "dist/meta.mjs",
@@ -39,9 +39,9 @@
     "test": "jest"
   },
   "dependencies": {
-    "@meta.js/identity": "^1.0.0-alpha",
-    "@meta.js/identity-claims": "^1.0.0-alpha",
-    "@meta.js/shared": "^1.0.0-alpha"
+    "@meta.js/identity": "^1.0.0-beta",
+    "@meta.js/identity-claims": "^1.0.0-beta",
+    "@meta.js/shared": "^1.0.0-beta"
   },
   "devDependencies": {
     "buble": "^0.18.0",
