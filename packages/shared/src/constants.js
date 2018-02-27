@@ -32,10 +32,3 @@ export const META_ID_FOLLOW_CLAIM_PROPERTY = 'follow.id'
  * @type {String}
  */
 export const META_ID_PROFILE_CLAIM_PREFIX = 'profile.'
-
-/**
- * META Identity `username` suffix
- *
- * @type {String}
- */
-export const META_ID_USERNAME_SUFFIX = '.meta'
