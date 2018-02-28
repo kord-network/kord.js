@@ -19,20 +19,22 @@
  If you have any questions please contact yo@jaak.io
 */
 
-import { bufferToHex, sha3 } from 'ethereumjs-util'
+import { isValidAddress } from 'ethereumjs-util'
 
 /**
- * Convert a META Identity `username` into a META Identity `id`
+ * Create a valid META Graph object to register a new META Graph
  *
- * @param  {String} username META Identity `username` string
- * @return {String}          META Identity `id` hex
+ * @param  {String} address Ethereum address of META Graph owner
+ * @return {Object}         META Graph object
  */
-const getIdFromUsername = username => {
-  if (typeof username === 'undefined' || typeof username !== 'string') {
-    throw new Error('`username` is undefined or not of type string.')
+const createGraphObject = address => {
+  if (typeof address === 'undefined' || !isValidAddress(address)) {
+    throw new Error('`address` is not a valid Ethereum public address.')
   }
 
-  return bufferToHex(sha3(username))
+  return {
+    id: address,
+  }
 }
 
-export default getIdFromUsername
+export default createGraphObject

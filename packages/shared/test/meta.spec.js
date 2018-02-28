@@ -20,12 +20,3 @@ describe('@meta.js/shared :: META_ID_PROFILE_CLAIM_PREFIX', () => {
     expect(actual).toEqual(expected)
   })
 })
-
-describe('@meta.js/shared :: META_ID_USERNAME_SUFFIX', () => {
-  it('Should return META_ID_USERNAME_SUFFIX value', () => {
-    const actual = metaShared.META_ID_USERNAME_SUFFIX
-    const expected = '.meta'
-
-    expect(actual).toEqual(expected)
-  })
-})

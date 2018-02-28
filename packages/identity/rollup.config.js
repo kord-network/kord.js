@@ -7,17 +7,9 @@ const isTest = process.env.TEST
 
 export default {
   input: './src/index.js',
-  external: [
-    '@meta.js/identity-claims',
-    '@meta.js/shared',
-    'ethereumjs-util',
-    'slugify',
-  ],
+  external: ['ethereumjs-util'],
   globals: {
-    '@meta.js/identity-claims': 'identityClaims',
-    '@meta.js/shared': 'shared',
     'ethereumjs-util': 'ethereumjsUtil',
-    slugify: 'slugify',
   },
   plugins: [buble(), !isTest && butternut()],
   output: [

@@ -19,14 +19,6 @@
  If you have any questions please contact yo@jaak.io
 */
 
-import createIdentityObject from './createIdentityObject'
-import getClaimsGraphFromUsername from './getClaimsGraphFromUsername'
-import getIdFromUsername from './getIdFromUsername'
-import getUsernameFromName from './getUsernameFromName'
+import createGraphObject from './createGraphObject'
 
-export {
-  createIdentityObject,
-  getClaimsGraphFromUsername,
-  getIdFromUsername,
-  getUsernameFromName,
-}
+export { createGraphObject }
