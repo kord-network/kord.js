@@ -7,8 +7,9 @@ const isTest = process.env.TEST
 
 export default {
   input: './src/index.js',
-  external: ['ethereumjs-util'],
+  external: ['@meta.js/identity-claims', 'ethereumjs-util'],
   globals: {
+    '@meta.js/identity-claims': 'identityClaims',
     'ethereumjs-util': 'ethereumjsUtil',
   },
   plugins: [buble(), !isTest && butternut()],
