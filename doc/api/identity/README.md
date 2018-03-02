@@ -22,3 +22,4 @@ const identity = require('@meta.js/identity')
 ## API
 
 - [`createGraphObject`](createGraphObject.md)
+- [`createSetGraphInput`](createSetGraphInput.md)

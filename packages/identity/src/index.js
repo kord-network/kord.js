@@ -20,5 +20,6 @@
 */
 
 import createGraphObject from './createGraphObject'
+import createSetGraphInput from './createSetGraphInput'
 
-export { createGraphObject }
+export { createGraphObject, createSetGraphInput }

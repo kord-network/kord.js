@@ -6,7 +6,7 @@ const graph = require('./fixtures/graph.json')
 describe('@meta.js/identity :: createGraphObject', () => {
   it('Should create a valid META Identity object', () => {
     const actual = metaIdentity.createGraphObject(account.address)
-    const expected = graph
+    const expected = { id: graph.id }
 
     expect(actual).toEqual(expected)
   })
