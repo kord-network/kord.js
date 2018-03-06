@@ -39,6 +39,7 @@
     "test": "jest"
   },
   "dependencies": {
+    "@meta.js/identity-claims": "^1.0.0-beta.1",
     "ethereumjs-util": "^5.1.2"
   },
   "devDependencies": {
