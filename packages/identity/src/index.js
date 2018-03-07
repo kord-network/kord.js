@@ -1,5 +1,5 @@
 /**
- This file is part of the meta.js library.
+ This file is part of the kord.js library.
 
  Copyright (C) 2018 JAAK MUSIC LTD
 
