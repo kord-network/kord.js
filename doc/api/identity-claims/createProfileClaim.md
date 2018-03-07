@@ -1,26 +1,26 @@
-# `createProfileMetaIdentityClaim()`
+# `createProfileClaim()`
 
-Create a valid META Identity Claim object for a profile claim.
+Create a valid KORD Claim object for a profile claim.
 This is a self-issued claim, usually referencing a Swarm hash of profile data.
 
 ## Parameters
 
 - `claimMessage` `<String>` - Raw identity claim message
 - `issuer` `<Object>` - Claim issuer data object
-- `issuer.id` `<String>` - META Identity ID of claim issuer
+- `issuer.id` `<String>` - KORD ID of claim issuer
 - `issuer.privateKey` `<String>` - Private key of claim issuer
 - `subProperty` `<String>` - Type of profile claim contained in `claimMessage`
 
 ## Returns
 
-- Verified META Identity Claim object `<Object>`
+- Verified KORD Claim object `<Object>`
 
 ## Example
 
 ```js
-import { createProfileMetaIdentityClaim } from '@meta.js/identity-claims'
+import { createProfileClaim } from '@kord.js/identity-claims'
 
-createProfileMetaIdentityClaim(
+createProfileClaim(
   '193fa6016d2358bd79e53637c3f72c636c95f89e154d496ac6b04b8b49966888',
   {
     id: '0x9271978a0651b4e0eb61a1162c16edc3c20a23380c5861040a07ac0326693895',

@@ -1,14 +1,14 @@
 <p align='center'>
-  <img src='https://user-images.githubusercontent.com/1913316/28971869-91b6f68e-7925-11e7-9a1a-d21db8a89acf.png' width='200'/>
+  <img src='https://user-images.githubusercontent.com/1913316/37030105-9b8e2114-2131-11e8-8b07-fd7839b80680.png' width='200'/>
 </p>
 
 <p align="center">
-  <a href="https://circleci.com/gh/meta-network/meta.js">
-    <img src="https://circleci.com/gh/meta-network/meta.js.svg?style=svg" alt="CircleCI" />
+  <a href="https://circleci.com/gh/kord-network/kord.js">
+    <img src="https://circleci.com/gh/kord-network/kord.js.svg?style=svg" alt="CircleCI" />
   </a>
 
-  <a href="https://www.npmjs.com/package/meta.js">
-    <img src="https://img.shields.io/npm/v/meta.js.svg?style=flat-square" alt="npm version" />
+  <a href="https://www.npmjs.com/package/kord.js">
+    <img src="https://img.shields.io/npm/v/kord.js.svg?style=flat-square" alt="npm version" />
   </a>
 
   <a href="https://github.com/prettier/prettier">
@@ -20,7 +20,7 @@
 ## Install
 
 ```
-npm install meta.js
+npm install kord.js
 ```
 
 ## Usage

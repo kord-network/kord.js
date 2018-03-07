@@ -1,7 +1,7 @@
 /**
- This file is part of the meta.js library.
+ This file is part of the kord.js library.
 
- Copyright (C) 2017 JAAK MUSIC LTD
+ Copyright (C) 2018 JAAK MUSIC LTD
 
  This program is free software: you can redistribute it and/or modify
  it under the terms of the GNU Lesser General Public License as published by
@@ -19,27 +19,22 @@
  If you have any questions please contact yo@jaak.io
 */
 
-import { META_ID_PROFILE_CLAIM_PREFIX } from '@meta.js/shared'
-import { createVerifiedIdentityClaimObject } from '@meta.js/identity-claims'
+import { createVerifiedIdentityClaimObject } from './index.js'
+import { KORD_PROFILE_CLAIM_PREFIX } from '@kord.js/shared'
 
 /**
- * Create a valid META Identity Claim object for a profile claim
+ * Create a valid KORD Claim object for a profile claim
  * This is a self-issued claim, usually referencing a Swarm hash of profile data
  *
  * @param  {String} claimMessage      Raw identity claim message
- * @param  {String} graph             META Claims Graph name
+ * @param  {String} graph             KORD Graph name
  * @param  {Object} issuer            Claim issuer data object
- * @param  {String} issuer.id         META Identity `id` of claim issuer
+ * @param  {String} issuer.id         KORD ID of claim issuer
  * @param  {String} issuer.privateKey Private key of claim issuer
  * @param  {String} subProperty       Type of profile claim contained in `claimMessage`
- * @return {Object}                   Verified META Identity Claim object
+ * @return {Object}                   Verified KORD Claim object
  */
-const createProfileMetaIdentityClaim = (
-  claimMessage,
-  graph,
-  issuer,
-  subProperty
-) => {
+const createProfileClaim = (claimMessage, graph, issuer, subProperty) => {
   if (typeof claimMessage === 'undefined' || typeof claimMessage !== 'string') {
     throw new Error('`claimMessage` is undefined or not of type string.')
   }
@@ -67,7 +62,7 @@ const createProfileMetaIdentityClaim = (
     throw new Error('`subProperty` is undefined or not of type string.')
   }
 
-  const property = `${META_ID_PROFILE_CLAIM_PREFIX}${subProperty}`
+  const property = `${KORD_PROFILE_CLAIM_PREFIX}${subProperty}`
 
   return createVerifiedIdentityClaimObject(
     claimMessage,
@@ -81,4 +76,4 @@ const createProfileMetaIdentityClaim = (
   )
 }
 
-export default createProfileMetaIdentityClaim
+export default createProfileClaim

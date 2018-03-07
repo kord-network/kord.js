@@ -1,11 +1,11 @@
-const metaIdentityClaims = require('../dist/meta-identity-claims')
+const kordIdentityClaims = require('../dist/kord-identity-claims')
 
 const account = require('./fixtures/account.json')
 const claim = require('./fixtures/claim.json')
 
-describe('@meta.js/identity-claims :: verifyIdentityClaim', () => {
-  it('Should verify address recovered from META Identity Claim', () => {
-    const actual = metaIdentityClaims.verifyIdentityClaim(
+describe('@kord.js/identity-claims :: verifyIdentityClaim', () => {
+  it('Should verify address recovered from KORD Claim', () => {
+    const actual = kordIdentityClaims.verifyIdentityClaim(
       account.address,
       claim.claimHash,
       claim.signature
@@ -17,7 +17,7 @@ describe('@meta.js/identity-claims :: verifyIdentityClaim', () => {
   })
 
   it('Should throw an error if address is undefined', () => {
-    const actual = () => metaIdentityClaims.verifyIdentityClaim()
+    const actual = () => kordIdentityClaims.verifyIdentityClaim()
 
     expect(actual).toThrow()
   })
@@ -25,13 +25,13 @@ describe('@meta.js/identity-claims :: verifyIdentityClaim', () => {
   it('Should throw an error if address is not of type string', () => {
     const address = { address: account.address }
 
-    const actual = () => metaIdentityClaims.verifyIdentityClaim(address)
+    const actual = () => kordIdentityClaims.verifyIdentityClaim(address)
 
     expect(actual).toThrow()
   })
 
   it('Should throw an error if claimHash is undefined', () => {
-    const actual = () => metaIdentityClaims.verifyIdentityClaim(account.address)
+    const actual = () => kordIdentityClaims.verifyIdentityClaim(account.address)
 
     expect(actual).toThrow()
   })
@@ -40,14 +40,14 @@ describe('@meta.js/identity-claims :: verifyIdentityClaim', () => {
     const claimHash = { claimHash: claim.claimHash }
 
     const actual = () =>
-      metaIdentityClaims.verifyIdentityClaim(account.address, claimHash)
+      kordIdentityClaims.verifyIdentityClaim(account.address, claimHash)
 
     expect(actual).toThrow()
   })
 
   it('Should throw an error if signature is undefined', () => {
     const actual = () =>
-      metaIdentityClaims.verifyIdentityClaim(account.address, claim.claimHash)
+      kordIdentityClaims.verifyIdentityClaim(account.address, claim.claimHash)
 
     expect(actual).toThrow()
   })
@@ -56,7 +56,7 @@ describe('@meta.js/identity-claims :: verifyIdentityClaim', () => {
     const signature = { signature: claim.signature }
 
     const actual = () =>
-      metaIdentityClaims.verifyIdentityClaim(
+      kordIdentityClaims.verifyIdentityClaim(
         account.address,
         claim.claimHash,
         signature

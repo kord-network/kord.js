@@ -1,19 +1,19 @@
-# @meta.js/identity-claims
+# @kord.js/identity-claims
 
-> meta.js identity-claims module
+> kord.js identity-claims module
 
 ## Install
 ```
-npm install @meta.js/identity-claims
+npm install @kord.js/identity-claims
 ```
 
 ## Usage
 ```
 // ES6
-import { identityClaims } from 'meta.js'
-import * as identityClaims from '@meta.js/identity-claims'
+import { identityClaims } from 'kord.js'
+import * as identityClaims from '@kord.js/identity-claims'
 
 // CommonJS
-const { identityClaims } = require('meta.js')
-const identityClaims = require('@meta.js/identity-claims')
+const { identityClaims } = require('kord.js')
+const identityClaims = require('@kord.js/identity-claims')
 ```

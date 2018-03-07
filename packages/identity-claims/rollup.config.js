@@ -7,9 +7,9 @@ const isTest = process.env.TEST
 
 export default {
   input: './src/index.js',
-  external: ['@meta.js/shared', 'ethereumjs-util'],
+  external: ['@kord.js/shared', 'ethereumjs-util'],
   globals: {
-    '@meta.js/shared': 'shared',
+    '@kord.js/shared': 'shared',
     'ethereumjs-util': 'ethereumjsUtil',
   },
   plugins: [buble(), !isTest && butternut()],

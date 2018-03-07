@@ -1,15 +1,15 @@
-const metaIdentityClaims = require('../dist/meta-identity-claims')
+const kordIdentityClaims = require('../dist/kord-identity-claims')
 
 const claim = require('./fixtures/claim.json')
 const issuer = require('./fixtures/issuer.json')
 const profileClaim = require('./fixtures/profile-claim.json')
 const verifiedProfileClaim = require('./fixtures/verified-profile-claim.json')
 
-describe('@meta.js/identity-claims :: createProfileMetaIdentityClaim', () => {
-  it('Should return a valid profile META Identity Claim object', () => {
+describe('@kord.js/identity-claims :: createProfileClaim', () => {
+  it('Should return a valid profile KORD Claim object', () => {
     const { claimMessage, subProperty } = profileClaim
 
-    const actual = metaIdentityClaims.createProfileMetaIdentityClaim(
+    const actual = kordIdentityClaims.createProfileClaim(
       claimMessage,
       claim.graph,
       issuer,
@@ -29,7 +29,7 @@ describe('@meta.js/identity-claims :: createProfileMetaIdentityClaim', () => {
   })
 
   it('Should throw an error if claimMessage is undefined', () => {
-    const actual = () => metaIdentityClaims.createProfileMetaIdentityClaim()
+    const actual = () => kordIdentityClaims.createProfileClaim()
 
     expect(actual).toThrow()
   })
@@ -38,7 +38,7 @@ describe('@meta.js/identity-claims :: createProfileMetaIdentityClaim', () => {
     const { claimMessage, subProperty } = profileClaim
 
     const actual = () =>
-      metaIdentityClaims.createProfileMetaIdentityClaim(
+      kordIdentityClaims.createProfileClaim(
         { claimMessage },
         issuer,
         subProperty
@@ -48,8 +48,7 @@ describe('@meta.js/identity-claims :: createProfileMetaIdentityClaim', () => {
   })
 
   it('Should throw an error if graph is undefined', () => {
-    const actual = () =>
-      metaIdentityClaims.createProfileMetaIdentityClaim(claimMessage)
+    const actual = () => kordIdentityClaims.createProfileClaim(claimMessage)
 
     expect(actual).toThrow()
   })
@@ -58,7 +57,7 @@ describe('@meta.js/identity-claims :: createProfileMetaIdentityClaim', () => {
     const { claimMessage, subProperty } = profileClaim
 
     const actual = () =>
-      metaIdentityClaims.createProfileMetaIdentityClaim(
+      kordIdentityClaims.createProfileClaim(
         claimMessage,
         { graph: claim.graph },
         issuer,
@@ -71,10 +70,7 @@ describe('@meta.js/identity-claims :: createProfileMetaIdentityClaim', () => {
   it('Should throw an error if issuer is undefined', () => {
     const { claimMessage } = profileClaim
     const actual = () =>
-      metaIdentityClaims.createProfileMetaIdentityClaim(
-        claimMessage,
-        claim.graph
-      )
+      kordIdentityClaims.createProfileClaim(claimMessage, claim.graph)
 
     expect(actual).toThrow()
   })
@@ -83,7 +79,7 @@ describe('@meta.js/identity-claims :: createProfileMetaIdentityClaim', () => {
     const { claimMessage, subProperty } = profileClaim
 
     const actual = () =>
-      metaIdentityClaims.createProfileMetaIdentityClaim(
+      kordIdentityClaims.createProfileClaim(
         claimMessage,
         claim.graph,
         'issuer',
@@ -97,11 +93,7 @@ describe('@meta.js/identity-claims :: createProfileMetaIdentityClaim', () => {
     issuer.id = { id: issuer.id }
 
     const actual = () =>
-      metaIdentityClaims.createProfileMetaIdentityClaim(
-        claimMessage,
-        claim.graph,
-        issuer
-      )
+      kordIdentityClaims.createProfileClaim(claimMessage, claim.graph, issuer)
 
     expect(actual).toThrow()
   })
@@ -110,11 +102,7 @@ describe('@meta.js/identity-claims :: createProfileMetaIdentityClaim', () => {
     delete issuer.id
 
     const actual = () =>
-      metaIdentityClaims.createProfileMetaIdentityClaim(
-        claimMessage,
-        claim.graph,
-        issuer
-      )
+      kordIdentityClaims.createProfileClaim(claimMessage, claim.graph, issuer)
 
     expect(actual).toThrow()
   })
@@ -123,11 +111,7 @@ describe('@meta.js/identity-claims :: createProfileMetaIdentityClaim', () => {
     issuer.privateKey = { privateKey: issuer.privateKey }
 
     const actual = () =>
-      metaIdentityClaims.createProfileMetaIdentityClaim(
-        claimMessage,
-        claim.graph,
-        issuer
-      )
+      kordIdentityClaims.createProfileClaim(claimMessage, claim.graph, issuer)
 
     expect(actual).toThrow()
   })
@@ -136,11 +120,7 @@ describe('@meta.js/identity-claims :: createProfileMetaIdentityClaim', () => {
     delete issuer.privateKey
 
     const actual = () =>
-      metaIdentityClaims.createProfileMetaIdentityClaim(
-        claimMessage,
-        claim.graph,
-        issuer
-      )
+      kordIdentityClaims.createProfileClaim(claimMessage, claim.graph, issuer)
 
     expect(actual).toThrow()
   })
@@ -149,25 +129,16 @@ describe('@meta.js/identity-claims :: createProfileMetaIdentityClaim', () => {
     const { claimMessage, subProperty } = profileClaim
 
     const actual = () =>
-      metaIdentityClaims.createProfileMetaIdentityClaim(
-        claimMessage,
-        claim.graph,
-        issuer,
-        {
-          subProperty,
-        }
-      )
+      kordIdentityClaims.createProfileClaim(claimMessage, claim.graph, issuer, {
+        subProperty,
+      })
 
     expect(actual).toThrow()
   })
 
   it('Should throw an error if subProperty is undefined', () => {
     const actual = () =>
-      metaIdentityClaims.createProfileMetaIdentityClaim(
-        claimMessage,
-        claim.graph,
-        issuer
-      )
+      kordIdentityClaims.createProfileClaim(claimMessage, claim.graph, issuer)
 
     expect(actual).toThrow()
   })
@@ -176,14 +147,9 @@ describe('@meta.js/identity-claims :: createProfileMetaIdentityClaim', () => {
     const { claimMessage, subProperty } = profileClaim
 
     const actual = () =>
-      metaIdentityClaims.createProfileMetaIdentityClaim(
-        claimMessage,
-        claim.graph,
-        issuer,
-        {
-          subProperty,
-        }
-      )
+      kordIdentityClaims.createProfileClaim(claimMessage, claim.graph, issuer, {
+        subProperty,
+      })
 
     expect(actual).toThrow()
   })

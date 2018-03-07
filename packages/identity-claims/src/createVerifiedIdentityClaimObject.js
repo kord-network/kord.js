@@ -1,7 +1,7 @@
 /**
- This file is part of the meta.js library.
+ This file is part of the kord.js library.
 
- Copyright (C) 2017 JAAK MUSIC LTD
+ Copyright (C) 2018 JAAK MUSIC LTD
 
  This program is free software: you can redistribute it and/or modify
  it under the terms of the GNU Lesser General Public License as published by
@@ -22,15 +22,15 @@
 import { ecsign, sha3, toBuffer, toRpcSig } from 'ethereumjs-util'
 
 /**
- * Create a valid META Identity Claim object to add to a META Claims Graph
+ * Create a valid KORD Claim object to add to a KORD Graph
  *
  * @param  {String} claimMessage      Raw claim value
- * @param  {Object} graph             META Claims Graph name
+ * @param  {Object} graph             KORD Graph name
  * @param  {Object} issuer            Claim issuer data object
- * @param  {String} issuer.id         META Identity `id` of claim issuer
+ * @param  {String} issuer.id         KORD ID of claim issuer
  * @param  {String} issuer.privateKey Private key of claim issuer
  * @param  {String} property          Property of identity claim
- * @param  {String} subject           META Identity `id` of claim subject
+ * @param  {String} subject           KORD ID of claim subject
  * @return {Object}                   Verified identity claim object
  */
 const createVerifiedIdentityClaimObject = (

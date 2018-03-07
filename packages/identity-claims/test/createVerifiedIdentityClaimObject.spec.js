@@ -1,13 +1,13 @@
-const metaIdentityClaims = require('../dist/meta-identity-claims')
+const kordIdentityClaims = require('../dist/kord-identity-claims')
 
 const claim = require('./fixtures/claim.json')
 const issuer = require('./fixtures/issuer.json')
 const subject = require('./fixtures/subject.json')
 const verifiedClaim = require('./fixtures/verified-claim.json')
 
-describe('@meta.js/identity-claims :: createVerifiedIdentityClaimObject', () => {
-  it('Should return a valid verified META Identity Claim object', () => {
-    const actual = metaIdentityClaims.createVerifiedIdentityClaimObject(
+describe('@kord.js/identity-claims :: createVerifiedIdentityClaimObject', () => {
+  it('Should return a valid verified KORD Claim object', () => {
+    const actual = kordIdentityClaims.createVerifiedIdentityClaimObject(
       claim.claimMessage,
       claim.graph,
       issuer,
@@ -28,7 +28,7 @@ describe('@meta.js/identity-claims :: createVerifiedIdentityClaimObject', () => 
   })
 
   it('Should throw an error if claimMessage is undefined', () => {
-    const actual = () => metaIdentityClaims.createVerifiedIdentityClaimObject()
+    const actual = () => kordIdentityClaims.createVerifiedIdentityClaimObject()
 
     expect(actual).toThrow()
   })
@@ -37,7 +37,7 @@ describe('@meta.js/identity-claims :: createVerifiedIdentityClaimObject', () => 
     const { claimMessage, graph, property } = claim
 
     const actual = () =>
-      metaIdentityClaims.createVerifiedIdentityClaimObject(
+      kordIdentityClaims.createVerifiedIdentityClaimObject(
         { claimMessage },
         graph,
         issuer,
@@ -51,7 +51,7 @@ describe('@meta.js/identity-claims :: createVerifiedIdentityClaimObject', () => 
     const { claimMessage } = claim
 
     const actual = () =>
-      metaIdentityClaims.createVerifiedIdentityClaimObject(claimMessage)
+      kordIdentityClaims.createVerifiedIdentityClaimObject(claimMessage)
 
     expect(actual).toThrow()
   })
@@ -60,7 +60,7 @@ describe('@meta.js/identity-claims :: createVerifiedIdentityClaimObject', () => 
     const { claimMessage, graph, property } = claim
 
     const actual = () =>
-      metaIdentityClaims.createVerifiedIdentityClaimObject(
+      kordIdentityClaims.createVerifiedIdentityClaimObject(
         claimMessage,
         { graph },
         issuer,
@@ -74,7 +74,7 @@ describe('@meta.js/identity-claims :: createVerifiedIdentityClaimObject', () => 
     const { claimMessage, graph } = claim
 
     const actual = () =>
-      metaIdentityClaims.createVerifiedIdentityClaimObject(claimMessage, graph)
+      kordIdentityClaims.createVerifiedIdentityClaimObject(claimMessage, graph)
 
     expect(actual).toThrow()
   })
@@ -83,7 +83,7 @@ describe('@meta.js/identity-claims :: createVerifiedIdentityClaimObject', () => 
     const { claimMessage, graph, property } = claim
 
     const actual = () =>
-      metaIdentityClaims.createVerifiedIdentityClaimObject(
+      kordIdentityClaims.createVerifiedIdentityClaimObject(
         claimMessage,
         graph,
         [issuer],
@@ -99,7 +99,7 @@ describe('@meta.js/identity-claims :: createVerifiedIdentityClaimObject', () => 
     issuer.id = { id: issuer.id }
 
     const actual = () =>
-      metaIdentityClaims.createVerifiedIdentityClaimObject(
+      kordIdentityClaims.createVerifiedIdentityClaimObject(
         claimMessage,
         graph,
         issuer
@@ -114,7 +114,7 @@ describe('@meta.js/identity-claims :: createVerifiedIdentityClaimObject', () => 
     delete issuer.id
 
     const actual = () =>
-      metaIdentityClaims.createVerifiedIdentityClaimObject(
+      kordIdentityClaims.createVerifiedIdentityClaimObject(
         claimMessage,
         graph,
         issuer
@@ -129,7 +129,7 @@ describe('@meta.js/identity-claims :: createVerifiedIdentityClaimObject', () => 
     issuer.privateKey = { privateKey: issuer.privateKey }
 
     const actual = () =>
-      metaIdentityClaims.createVerifiedIdentityClaimObject(
+      kordIdentityClaims.createVerifiedIdentityClaimObject(
         claimMessage,
         graph,
         issuer
@@ -144,7 +144,7 @@ describe('@meta.js/identity-claims :: createVerifiedIdentityClaimObject', () => 
     delete issuer.privateKey
 
     const actual = () =>
-      metaIdentityClaims.createVerifiedIdentityClaimObject(
+      kordIdentityClaims.createVerifiedIdentityClaimObject(
         claimMessage,
         graph,
         issuer
@@ -157,7 +157,7 @@ describe('@meta.js/identity-claims :: createVerifiedIdentityClaimObject', () => 
     const { claimMessage, graph } = claim
 
     const actual = () =>
-      metaIdentityClaims.createVerifiedIdentityClaimObject(
+      kordIdentityClaims.createVerifiedIdentityClaimObject(
         claimMessage,
         graph,
         issuer
@@ -170,7 +170,7 @@ describe('@meta.js/identity-claims :: createVerifiedIdentityClaimObject', () => 
     const { claimMessage, graph, property } = claim
 
     const actual = () =>
-      metaIdentityClaims.createVerifiedIdentityClaimObject(
+      kordIdentityClaims.createVerifiedIdentityClaimObject(
         claimMessage,
         graph,
         issuer,
@@ -184,7 +184,7 @@ describe('@meta.js/identity-claims :: createVerifiedIdentityClaimObject', () => 
     const { claimMessage, graph, property } = claim
 
     const actual = () =>
-      metaIdentityClaims.createVerifiedIdentityClaimObject(
+      kordIdentityClaims.createVerifiedIdentityClaimObject(
         claimMessage,
         graph,
         issuer,
@@ -198,7 +198,7 @@ describe('@meta.js/identity-claims :: createVerifiedIdentityClaimObject', () => 
     const { claimMessage, graph, property } = claim
 
     const actual = () =>
-      metaIdentityClaims.createVerifiedIdentityClaimObject(
+      kordIdentityClaims.createVerifiedIdentityClaimObject(
         claimMessage,
         graph,
         issuer,

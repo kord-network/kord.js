@@ -1,11 +1,11 @@
-const metaIdentityClaims = require('../dist/meta-identity-claims')
+const kordIdentityClaims = require('../dist/kord-identity-claims')
 
 const account = require('./fixtures/account.json')
 const claim = require('./fixtures/claim.json')
 
-describe('@meta.js/identity-claims :: recoverAddressFromIdentityClaim', () => {
-  it('Should recover address from META Identity Claim', () => {
-    const actual = metaIdentityClaims.recoverAddressFromIdentityClaim(
+describe('@kord.js/identity-claims :: recoverAddressFromIdentityClaim', () => {
+  it('Should recover address from KORD Claim', () => {
+    const actual = kordIdentityClaims.recoverAddressFromIdentityClaim(
       claim.claimHash,
       claim.signature
     )
@@ -16,7 +16,7 @@ describe('@meta.js/identity-claims :: recoverAddressFromIdentityClaim', () => {
   })
 
   it('Should throw an error if claimHash is undefined', () => {
-    const actual = () => metaIdentityClaims.recoverAddressFromIdentityClaim()
+    const actual = () => kordIdentityClaims.recoverAddressFromIdentityClaim()
 
     expect(actual).toThrow()
   })
@@ -25,14 +25,14 @@ describe('@meta.js/identity-claims :: recoverAddressFromIdentityClaim', () => {
     const claimHash = { claimHash: claim.claimHash }
 
     const actual = () =>
-      metaIdentityClaims.recoverAddressFromIdentityClaim(claimHash)
+      kordIdentityClaims.recoverAddressFromIdentityClaim(claimHash)
 
     expect(actual).toThrow()
   })
 
   it('Should throw an error if signature is undefined', () => {
     const actual = () =>
-      metaIdentityClaims.recoverAddressFromIdentityClaim(claim.claimHash)
+      kordIdentityClaims.recoverAddressFromIdentityClaim(claim.claimHash)
 
     expect(actual).toThrow()
   })
@@ -41,7 +41,7 @@ describe('@meta.js/identity-claims :: recoverAddressFromIdentityClaim', () => {
     const signature = claim.signature.slice(2)
 
     const actual = () =>
-      metaIdentityClaims.recoverAddressFromIdentityClaim(
+      kordIdentityClaims.recoverAddressFromIdentityClaim(
         claim.claimHash,
         signature
       )

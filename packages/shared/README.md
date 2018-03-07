@@ -1,19 +1,19 @@
-# @meta.js/shared
+# @kord.js/shared
 
-> meta.js shared module
+> kord.js shared module
 
 ## Install
 ```
-npm install @meta.js/shared
+npm install @kord.js/shared
 ```
 
 ## Usage
 ```
 // ES6
-import { shared } from 'meta.js'
-import * as shared from '@meta.js/shared'
+import { shared } from 'kord.js'
+import * as shared from '@kord.js/shared'
 
 // CommonJS
-const { shared } = require('meta.js')
-const shared = require('@meta.js/shared')
+const { shared } = require('kord.js')
+const shared = require('@kord.js/shared')
 ```

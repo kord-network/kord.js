@@ -1,12 +1,12 @@
-const metaIdentityClaims = require('../dist/meta-identity-claims')
+const kordIdentityClaims = require('../dist/kord-identity-claims')
 
 const account = require('./fixtures/account.json')
 const claim = require('./fixtures/claim.json')
 const subject = require('./fixtures/subject.json')
 
-describe('@meta.js/identity-claims :: createVerifiableIdentityClaimObject', () => {
-  it('Should return a valid verifiable META Identity Claim object', () => {
-    const actual = metaIdentityClaims.createVerifiableIdentityClaimObject(
+describe('@kord.js/identity-claims :: createVerifiableIdentityClaimObject', () => {
+  it('Should return a valid verifiable KORD Claim object', () => {
+    const actual = kordIdentityClaims.createVerifiableIdentityClaimObject(
       account,
       claim.claimMessage,
       claim.graph,
@@ -29,7 +29,7 @@ describe('@meta.js/identity-claims :: createVerifiableIdentityClaimObject', () =
 
   it('Should throw an error if claimMessage is undefined', () => {
     const actual = () =>
-      metaIdentityClaims.createVerifiableIdentityClaimObject(account)
+      kordIdentityClaims.createVerifiableIdentityClaimObject(account)
 
     expect(actual).toThrow()
   })
@@ -38,7 +38,7 @@ describe('@meta.js/identity-claims :: createVerifiableIdentityClaimObject', () =
     const claimMessage = { claimMessage: claim.claimMessage }
 
     const actual = () =>
-      metaIdentityClaims.createVerifiableIdentityClaimObject(
+      kordIdentityClaims.createVerifiableIdentityClaimObject(
         account,
         claimMessage
       )
@@ -48,7 +48,7 @@ describe('@meta.js/identity-claims :: createVerifiableIdentityClaimObject', () =
 
   it('Should throw an error if graph is undefined', () => {
     const actual = () =>
-      metaIdentityClaims.createVerifiableIdentityClaimObject(
+      kordIdentityClaims.createVerifiableIdentityClaimObject(
         account,
         claim.claimMessage
       )
@@ -58,7 +58,7 @@ describe('@meta.js/identity-claims :: createVerifiableIdentityClaimObject', () =
 
   it('Should throw an error if graph is not of type string', () => {
     const actual = () =>
-      metaIdentityClaims.createVerifiableIdentityClaimObject(
+      kordIdentityClaims.createVerifiableIdentityClaimObject(
         account,
         claim.claimMessage,
         { graph: claim.graph }
@@ -69,7 +69,7 @@ describe('@meta.js/identity-claims :: createVerifiableIdentityClaimObject', () =
 
   it('Should throw an error if subject is undefined', () => {
     const actual = () =>
-      metaIdentityClaims.createVerifiableIdentityClaimObject(
+      kordIdentityClaims.createVerifiableIdentityClaimObject(
         account,
         claim.claimMessage,
         claim.graph
@@ -80,7 +80,7 @@ describe('@meta.js/identity-claims :: createVerifiableIdentityClaimObject', () =
 
   it('Should throw an error if subject is not of type string', () => {
     const actual = () =>
-      metaIdentityClaims.createVerifiableIdentityClaimObject(
+      kordIdentityClaims.createVerifiableIdentityClaimObject(
         account,
         claim.claimMessage,
         claim.graph,
@@ -92,7 +92,7 @@ describe('@meta.js/identity-claims :: createVerifiableIdentityClaimObject', () =
 
   it('Should throw an error if extraData is not of type object', () => {
     const actual = () =>
-      metaIdentityClaims.createVerifiableIdentityClaimObject(
+      kordIdentityClaims.createVerifiableIdentityClaimObject(
         account,
         claim.claimMessage,
         claim.graph,
@@ -105,14 +105,14 @@ describe('@meta.js/identity-claims :: createVerifiableIdentityClaimObject', () =
 
   it('Should throw an error if account is undefined', () => {
     const actual = () =>
-      metaIdentityClaims.createVerifiableIdentityClaimObject()
+      kordIdentityClaims.createVerifiableIdentityClaimObject()
 
     expect(actual).toThrow()
   })
 
   it('Should throw an error if account is not of type object', () => {
     const actual = () =>
-      metaIdentityClaims.createVerifiableIdentityClaimObject([account])
+      kordIdentityClaims.createVerifiableIdentityClaimObject([account])
 
     expect(actual).toThrow()
   })
@@ -121,7 +121,7 @@ describe('@meta.js/identity-claims :: createVerifiableIdentityClaimObject', () =
     account.address = { address: account.address }
 
     const actual = () =>
-      metaIdentityClaims.createVerifiableIdentityClaimObject(account)
+      kordIdentityClaims.createVerifiableIdentityClaimObject(account)
 
     expect(actual).toThrow()
   })
@@ -130,7 +130,7 @@ describe('@meta.js/identity-claims :: createVerifiableIdentityClaimObject', () =
     delete account.address
 
     const actual = () =>
-      metaIdentityClaims.createVerifiableIdentityClaimObject(account)
+      kordIdentityClaims.createVerifiableIdentityClaimObject(account)
 
     expect(actual).toThrow()
   })
@@ -139,7 +139,7 @@ describe('@meta.js/identity-claims :: createVerifiableIdentityClaimObject', () =
     account.privateKey = { privateKey: account.privateKey }
 
     const actual = () =>
-      metaIdentityClaims.createVerifiableIdentityClaimObject(account)
+      kordIdentityClaims.createVerifiableIdentityClaimObject(account)
 
     expect(actual).toThrow()
   })
@@ -148,7 +148,7 @@ describe('@meta.js/identity-claims :: createVerifiableIdentityClaimObject', () =
     delete account.privateKey
 
     const actual = () =>
-      metaIdentityClaims.createVerifiableIdentityClaimObject(account)
+      kordIdentityClaims.createVerifiableIdentityClaimObject(account)
 
     expect(actual).toThrow()
   })

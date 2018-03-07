@@ -1,20 +1,20 @@
-const metaShared = require('../dist/meta-shared')
+const kordShared = require('../dist/kord-shared')
 
 /**
- * @meta.js/shared tests
+ * @kord.js/shared tests
  */
-describe('@meta.js/shared :: META_ID_FOLLOW_CLAIM_PROPERTY', () => {
-  it('Should return META_ID_FOLLOW_CLAIM_PROPERTY value', () => {
-    const actual = metaShared.META_ID_FOLLOW_CLAIM_PROPERTY
-    const expected = 'follow.id'
+describe('@kord.js/shared :: KORD_GRAPH_BOOKMARK_CLAIM_PROPERTY', () => {
+  it('Should return KORD_GRAPH_BOOKMARK_CLAIM_PROPERTY value', () => {
+    const actual = kordShared.KORD_GRAPH_BOOKMARK_CLAIM_PROPERTY
+    const expected = 'bookmark.graph'
 
     expect(actual).toEqual(expected)
   })
 })
 
-describe('@meta.js/shared :: META_ID_PROFILE_CLAIM_PREFIX', () => {
-  it('Should return META_ID_PROFILE_CLAIM_PREFIX value', () => {
-    const actual = metaShared.META_ID_PROFILE_CLAIM_PREFIX
+describe('@kord.js/shared :: KORD_PROFILE_CLAIM_PREFIX', () => {
+  it('Should return KORD_PROFILE_CLAIM_PREFIX value', () => {
+    const actual = kordShared.KORD_PROFILE_CLAIM_PREFIX
     const expected = 'profile.'
 
     expect(actual).toEqual(expected)

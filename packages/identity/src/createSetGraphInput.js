@@ -1,7 +1,7 @@
 /**
- This file is part of the meta.js library.
+ This file is part of the kord.js library.
 
- Copyright (C) 2017 JAAK MUSIC LTD
+ Copyright (C) 2018 JAAK MUSIC LTD
 
  This program is free software: you can redistribute it and/or modify
  it under the terms of the GNU Lesser General Public License as published by
@@ -19,10 +19,10 @@
  If you have any questions please contact yo@jaak.io
 */
 
-import { signMessage } from '@meta.js/identity-claims'
+import { signMessage } from '@kord.js/identity-claims'
 
 /**
- * Generate input object for the META graph hash mutation
+ * Generate input object for the KORD graph hash mutation
  *
  * @param  {Object} account            Ethereum account object
  * @param  {String} account.address    Ethereum public address

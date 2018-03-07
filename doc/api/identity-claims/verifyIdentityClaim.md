@@ -15,7 +15,7 @@ Verify identity claim subject's address against recovered address.
 ## Example
 
 ```js
-import { verifyIdentityClaim } from '@meta.js/identity-claims'
+import { verifyIdentityClaim } from '@kord.js/identity-claims'
 
 verifyIdentityClaim(
   '0xE4258268bf30F9540EeBfF7150148E387bcE0a2f',

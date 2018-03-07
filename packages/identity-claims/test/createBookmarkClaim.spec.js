@@ -1,17 +1,17 @@
-const metaIdentityClaims = require('../dist/meta-identity-claims')
+const kordIdentityClaims = require('../dist/kord-identity-claims')
 
 const claim = require('./fixtures/claim.json')
-const followClaim = require('./fixtures/follow-claim.json')
+const bookmarkClaim = require('./fixtures/bookmark-claim.json')
 const issuer = require('./fixtures/issuer.json')
 const subject = require('./fixtures/subject.json')
 const verifiedClaim = require('./fixtures/verified-claim.json')
-const verifiedFollowClaim = require('./fixtures/verified-follow-claim.json')
+const verifiedBookmarkClaim = require('./fixtures/verified-bookmark-claim.json')
 
-describe('@meta.js/identity-claims :: followMetaIdentity', () => {
-  it('Should return a valid verified META Identity Follow Claim object', () => {
+describe('@kord.js/identity-claims :: createBookmarkClaim', () => {
+  it('Should return a valid verified KORD Bookmark Claim object', () => {
     verifiedClaim.issuerAddress = issuer.address
 
-    const actual = metaIdentityClaims.followMetaIdentity(
+    const actual = kordIdentityClaims.createBookmarkClaim(
       [verifiedClaim],
       claim.graph,
       issuer,
@@ -22,19 +22,19 @@ describe('@meta.js/identity-claims :: followMetaIdentity', () => {
       claim: subject.id,
       graph: claim.graph,
       issuer: issuer.id,
-      property: followClaim.property,
-      signature: verifiedFollowClaim.signature,
+      property: bookmarkClaim.property,
+      signature: verifiedBookmarkClaim.signature,
       subject: subject.id,
     }
 
     expect(actual).toEqual(expected)
   })
 
-  it('Should throw an error if META Identity claims cannot be verified', () => {
+  it('Should throw an error if KORD Graph cannot be verified', () => {
     delete verifiedClaim.issuerAddress
 
     const actual = () =>
-      metaIdentityClaims.followMetaIdentity(
+      kordIdentityClaims.createBookmarkClaim(
         [verifiedClaim],
         claim.graph,
         issuer,
@@ -45,40 +45,40 @@ describe('@meta.js/identity-claims :: followMetaIdentity', () => {
   })
 
   it('Should throw an error if claims is undefined', () => {
-    const actual = () => metaIdentityClaims.followMetaIdentity()
+    const actual = () => kordIdentityClaims.createBookmarkClaim()
 
     expect(actual).toThrow()
   })
 
   it('Should throw an error if claims is not an array', () => {
-    const actual = () => metaIdentityClaims.followMetaIdentity(verifiedClaim)
+    const actual = () => kordIdentityClaims.createBookmarkClaim(verifiedClaim)
 
     expect(actual).toThrow()
   })
 
   it('Should throw an error if graph is undefined', () => {
-    const actual = () => metaIdentityClaims.followMetaIdentity([verifiedClaim])
+    const actual = () => kordIdentityClaims.createBookmarkClaim([verifiedClaim])
 
     expect(actual).toThrow()
   })
 
   it('Should throw an error if graph is not of type string', () => {
     const actual = () =>
-      metaIdentityClaims.followMetaIdentity(verifiedClaim, [claim.graph])
+      kordIdentityClaims.createBookmarkClaim(verifiedClaim, [claim.graph])
 
     expect(actual).toThrow()
   })
 
   it('Should throw an error if issuer is undefined', () => {
     const actual = () =>
-      metaIdentityClaims.followMetaIdentity([verifiedClaim], claim.graph)
+      kordIdentityClaims.createBookmarkClaim([verifiedClaim], claim.graph)
 
     expect(actual).toThrow()
   })
 
   it('Should throw an error if issuer is not of type object', () => {
     const actual = () =>
-      metaIdentityClaims.followMetaIdentity([verifiedClaim], claim.graph, [
+      kordIdentityClaims.createBookmarkClaim([verifiedClaim], claim.graph, [
         issuer,
       ])
 
@@ -89,7 +89,7 @@ describe('@meta.js/identity-claims :: followMetaIdentity', () => {
     issuer.id = { id: issuer.id }
 
     const actual = () =>
-      metaIdentityClaims.followMetaIdentity(
+      kordIdentityClaims.createBookmarkClaim(
         [verifiedClaim],
         claim.graph,
         issuer
@@ -102,7 +102,7 @@ describe('@meta.js/identity-claims :: followMetaIdentity', () => {
     delete issuer.id
 
     const actual = () =>
-      metaIdentityClaims.followMetaIdentity(
+      kordIdentityClaims.createBookmarkClaim(
         [verifiedClaim],
         claim.graph,
         issuer
@@ -115,7 +115,7 @@ describe('@meta.js/identity-claims :: followMetaIdentity', () => {
     issuer.privateKey = { privateKey: issuer.privateKey }
 
     const actual = () =>
-      metaIdentityClaims.followMetaIdentity(
+      kordIdentityClaims.createBookmarkClaim(
         [verifiedClaim],
         claim.graph,
         issuer
@@ -128,7 +128,7 @@ describe('@meta.js/identity-claims :: followMetaIdentity', () => {
     delete issuer.privateKey
 
     const actual = () =>
-      metaIdentityClaims.followMetaIdentity(
+      kordIdentityClaims.createBookmarkClaim(
         [verifiedClaim],
         claim.graph,
         issuer
@@ -139,7 +139,7 @@ describe('@meta.js/identity-claims :: followMetaIdentity', () => {
 
   it('Should throw an error if subject is undefined', () => {
     const actual = () =>
-      metaIdentityClaims.followMetaIdentity(
+      kordIdentityClaims.createBookmarkClaim(
         [verifiedClaim],
         claim.graph,
         issuer
@@ -150,7 +150,7 @@ describe('@meta.js/identity-claims :: followMetaIdentity', () => {
 
   it('Should throw an error if subject is not of type string', () => {
     const actual = () =>
-      metaIdentityClaims.followMetaIdentity(
+      kordIdentityClaims.createBookmarkClaim(
         [verifiedClaim],
         claim.graph,
         issuer,

@@ -1,10 +1,10 @@
 {
-  "name": "@meta.js/identity",
-  "version": "1.0.0-beta.2",
-  "description": "META Network JavaScript library - identity module",
-  "main": "dist/meta-identity.js",
-  "module": "dist/meta-identity.mjs",
-  "jsnext:main": "dist/meta-identity.mjs",
+  "name": "@kord.js/identity",
+  "version": "1.0.0-alpha",
+  "description": "KORD Network JavaScript library - identity module",
+  "main": "dist/kord-identity.js",
+  "module": "dist/kord-identity.mjs",
+  "jsnext:main": "dist/kord-identity.mjs",
   "engines": {
     "node": ">= 8.9.0 <= 8.9.1",
     "yarn": ">= 1.3.0 <= 1.3.2"
@@ -15,19 +15,19 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/meta-network/meta.js.git"
+    "url": "git+https://github.com/kord-network/kord.js.git"
   },
   "keywords": [
-    "meta",
+    "kord",
     "network",
-    "meta.js"
+    "kord.js"
   ],
   "author": "JAAK Music Ltd. (https://jaak.io/)",
   "license": "LGPL-3.0",
   "bugs": {
-    "url": "https://github.com/meta-network/meta.js/issues"
+    "url": "https://github.com/kord-network/kord.js/issues"
   },
-  "homepage": "https://github.com/meta-network/meta.js#readme",
+  "homepage": "https://github.com/kord-network/kord.js#readme",
   "publishConfig": {
     "access": "public"
   },
@@ -39,7 +39,7 @@
     "test": "jest"
   },
   "dependencies": {
-    "@meta.js/identity-claims": "^1.0.0-beta.1",
+    "@kord.js/identity-claims": "^1.0.0-alpha",
     "ethereumjs-util": "^5.1.2"
   },
   "devDependencies": {

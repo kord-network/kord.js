@@ -1,7 +1,7 @@
 {
   "private": true,
   "version": "1.0.0",
-  "description": "META Network JavaScript library",
+  "description": "KORD Network JavaScript library",
   "workspaces": [
     "packages/*"
   ],
@@ -14,19 +14,19 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/meta-network/meta.js.git"
+    "url": "git+https://github.com/kord-network/kord.js.git"
   },
   "keywords": [
-    "meta",
+    "kord",
     "network",
-    "meta.js"
+    "kord.js"
   ],
   "author": "JAAK Music Ltd. (https://jaak.io/)",
   "license": "LGPL-3.0",
   "bugs": {
-    "url": "https://github.com/meta-network/meta.js/issues"
+    "url": "https://github.com/kord-network/kord.js/issues"
   },
-  "homepage": "https://github.com/meta-network/meta.js#readme",
+  "homepage": "https://github.com/kord-network/kord.js#readme",
   "lint-staged": {
     "*.js": [
       "eslint --fix \"lib/**/*.js\"",

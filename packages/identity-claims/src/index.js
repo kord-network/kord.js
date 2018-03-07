@@ -1,7 +1,7 @@
 /**
- This file is part of the meta.js library.
+ This file is part of the kord.js library.
 
- Copyright (C) 2017 JAAK MUSIC LTD
+ Copyright (C) 2018 JAAK MUSIC LTD
 
  This program is free software: you can redistribute it and/or modify
  it under the terms of the GNU Lesser General Public License as published by
@@ -19,10 +19,10 @@
  If you have any questions please contact yo@jaak.io
 */
 
-import createProfileMetaIdentityClaim from './createProfileMetaIdentityClaim'
+import createBookmarkClaim from './createBookmarkClaim'
+import createProfileClaim from './createProfileClaim'
 import createVerifiableIdentityClaimObject from './createVerifiableIdentityClaimObject'
 import createVerifiedIdentityClaimObject from './createVerifiedIdentityClaimObject'
-import followMetaIdentity from './followMetaIdentity'
 import getProfileClaimSubPropertyFromProperty from './getProfileClaimSubPropertyFromProperty'
 import isProfileClaim from './isProfileClaim'
 import recoverAddressFromIdentityClaim from './recoverAddressFromIdentityClaim'
@@ -30,10 +30,10 @@ import signMessage from './signMessage'
 import verifyIdentityClaim from './verifyIdentityClaim'
 
 export {
-  createProfileMetaIdentityClaim,
+  createBookmarkClaim,
+  createProfileClaim,
   createVerifiableIdentityClaimObject,
   createVerifiedIdentityClaimObject,
-  followMetaIdentity,
   getProfileClaimSubPropertyFromProperty,
   isProfileClaim,
   recoverAddressFromIdentityClaim,

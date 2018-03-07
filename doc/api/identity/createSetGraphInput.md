@@ -1,22 +1,22 @@
 # `createSetGraphInput()`
 
-Create a valid META Graph hash mutation input object.
+Create a valid KORD Graph hash mutation input object.
 
 ## Parameters
 
 - `account` `<Object>` - Ethereum account object
 - `account.address` `<String>` - Account Ethereum address
 - `account.privateKey` `<String>` - Account private key
-- `hash` `<String>` - META Graph Swarm hash to sign
+- `hash` `<String>` - KORD Graph Swarm hash to sign
 
 ## Returns
 
-- META Graph hash mutation input object `<Object>`
+- KORD Graph hash mutation input object `<Object>`
 
 ## Example
 
 ```js
-import { createSetGraphInput } from '@meta.js/identity'
+import { createSetGraphInput } from '@kord.js/identity'
 
 createSetGraphInput(
   {

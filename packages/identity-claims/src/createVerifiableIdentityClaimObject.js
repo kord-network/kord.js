@@ -1,7 +1,7 @@
 /**
- This file is part of the meta.js library.
+ This file is part of the kord.js library.
 
- Copyright (C) 2017 JAAK MUSIC LTD
+ Copyright (C) 2018 JAAK MUSIC LTD
 
  This program is free software: you can redistribute it and/or modify
  it under the terms of the GNU Lesser General Public License as published by
@@ -19,20 +19,20 @@
  If you have any questions please contact yo@jaak.io
 */
 
+import { signMessage } from './index.js'
 import { bufferToHex, sha3 } from 'ethereumjs-util'
-import { signMessage } from '@meta.js/identity-claims'
 
 /**
- * Create a valid META Identity Claim object to verify a new identity claim
+ * Create a valid KORD Claim object to verify a new claim
  *
  * @param  {Object} account            Ethereum account object
  * @param  {String} account.address    Account Ethereum address
  * @param  {String} account.privateKey Account private key
- * @param  {String} claimMessage       Raw identity claim message
- * @param  {String} graph              META Claims Graph name
- * @param  {String} subject            META Identity `id` of subject (hash of `username`)
- * @param  {Object} extraData          Any extra properties to add to identity claim object
- * @return {Object}                    META Identity Claim object
+ * @param  {String} claimMessage       Raw claim message
+ * @param  {String} graph              KORD Graph name
+ * @param  {String} subject            KORD ID of subject (hash of `username`)
+ * @param  {Object} extraData          Any extra properties to add to claim object
+ * @return {Object}                    KORD Claim object
  */
 const createVerifiableIdentityClaimObject = (
   account,

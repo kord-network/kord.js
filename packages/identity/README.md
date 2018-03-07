@@ -1,19 +1,19 @@
-# @meta.js/identity
+# @kord.js/identity
 
-> meta.js identity module
+> kord.js identity module
 
 ## Install
 ```
-npm install @meta.js/identity
+npm install @kord.js/identity
 ```
 
 ## Usage
 ```
 // ES6
-import { identity } from 'meta.js'
-import * as identity from '@meta.js/identity'
+import { identity } from 'kord.js'
+import * as identity from '@kord.js/identity'
 
 // CommonJS
-const { identity } = require('meta.js')
-const identity = require('@meta.js/identity')
+const { identity } = require('kord.js')
+const identity = require('@kord.js/identity')
 ```

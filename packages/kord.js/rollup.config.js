@@ -8,14 +8,14 @@ const isTest = process.env.TEST
 export default {
   input: './src/index.js',
   external: [
-    '@meta.js/identity',
-    '@meta.js/identity-claims',
-    '@meta.js/shared',
+    '@kord.js/identity',
+    '@kord.js/identity-claims',
+    '@kord.js/shared',
   ],
   globals: {
-    '@meta.js/identity': 'identity',
-    '@meta.js/identity-claims': 'identityClaims',
-    '@meta.js/shared': 'shared',
+    '@kord.js/identity': 'identity',
+    '@kord.js/identity-claims': 'identityClaims',
+    '@kord.js/shared': 'shared',
   },
   plugins: [buble(), !isTest && butternut()],
   output: [

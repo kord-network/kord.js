@@ -1,7 +1,7 @@
 /**
- This file is part of the meta.js library.
+ This file is part of the kord.js library.
 
- Copyright (C) 2017 JAAK MUSIC LTD
+ Copyright (C) 2018 JAAK MUSIC LTD
 
  This program is free software: you can redistribute it and/or modify
  it under the terms of the GNU Lesser General Public License as published by
@@ -19,8 +19,8 @@
  If you have any questions please contact yo@jaak.io
 */
 
+import { recoverAddressFromIdentityClaim } from './index.js'
 import { isValidAddress } from 'ethereumjs-util'
-import { recoverAddressFromIdentityClaim } from '@meta.js/identity-claims'
 
 /**
  * Verify identity claim subject's address against recovered address

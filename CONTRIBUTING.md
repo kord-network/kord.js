@@ -1,8 +1,6 @@
 # Contributing
 
-See the [META contributing guide](https://github.com/meta-network/docs/blob/master/CONTRIBUTING.md).
-
-`meta.js` is a [monorepo](https://danluu.com/monorepo/) and its tooling has been
+`kord.js` is a [monorepo](https://danluu.com/monorepo/) and its tooling has been
 chosen to simplify the process of building and testing packages simultaneously,
 whilst remaining light and transparent:
 

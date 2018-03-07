@@ -1,7 +1,7 @@
 /**
- This file is part of the meta.js library.
+ This file is part of the kord.js library.
 
- Copyright (C) 2017 JAAK MUSIC LTD
+ Copyright (C) 2018 JAAK MUSIC LTD
 
  This program is free software: you can redistribute it and/or modify
  it under the terms of the GNU Lesser General Public License as published by
@@ -19,9 +19,9 @@
  If you have any questions please contact yo@jaak.io
 */
 
-import * as identity from '@meta.js/identity'
-import * as identityClaims from '@meta.js/identity-claims'
-import * as shared from '@meta.js/shared'
+import * as identity from '@kord.js/identity'
+import * as identityClaims from '@kord.js/identity-claims'
+import * as shared from '@kord.js/shared'
 
 const version = shared.version
 

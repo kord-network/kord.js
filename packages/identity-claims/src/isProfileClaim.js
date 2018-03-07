@@ -1,7 +1,7 @@
 /**
- This file is part of the meta.js library.
+ This file is part of the kord.js library.
 
- Copyright (C) 2017 JAAK MUSIC LTD
+ Copyright (C) 2018 JAAK MUSIC LTD
 
  This program is free software: you can redistribute it and/or modify
  it under the terms of the GNU Lesser General Public License as published by
@@ -19,12 +19,12 @@
  If you have any questions please contact yo@jaak.io
 */
 
-import { META_ID_PROFILE_CLAIM_PREFIX } from '@meta.js/shared'
+import { KORD_PROFILE_CLAIM_PREFIX } from '@kord.js/shared'
 
 /**
- * Check if a META Identity Claim is a profile claim
+ * Check if a KORD Claim is a profile claim
  *
- * @param  {Object}  claim META Identity Claim object
+ * @param  {Object}  claim KORD Claim object
  * @return {Boolean}       Profile claim boolean
  */
 const isProfileClaim = claim => {
@@ -36,7 +36,7 @@ const isProfileClaim = claim => {
     throw new Error('`claim` is missing a `property` property.')
   }
 
-  return claim.property.startsWith(`${META_ID_PROFILE_CLAIM_PREFIX}`)
+  return claim.property.startsWith(`${KORD_PROFILE_CLAIM_PREFIX}`)
 }
 
 export default isProfileClaim

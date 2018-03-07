@@ -14,7 +14,7 @@ Recover Ethereum address from identity claim hash.
 ## Example
 
 ```js
-import { recoverAddressFromIdentityClaim } from '@meta.js/identity-claims'
+import { recoverAddressFromIdentityClaim } from '@kord.js/identity-claims'
 
 recoverAddressFromIdentityClaim(
   '0xe864f1c2c17d143cfbc1ae68f2977e0068a2b13342f12834a4184c8a31d7b84f',

@@ -1,7 +1,7 @@
 /**
- This file is part of the meta.js library.
+ This file is part of the kord.js library.
 
- Copyright (C) 2017 JAAK MUSIC LTD
+ Copyright (C) 2018 JAAK MUSIC LTD
 
  This program is free software: you can redistribute it and/or modify
  it under the terms of the GNU Lesser General Public License as published by
@@ -22,10 +22,10 @@
 import { isValidAddress } from 'ethereumjs-util'
 
 /**
- * Create a valid META Graph object to register a new META Graph
+ * Create a valid KORD Graph object to register a new KORD Graph
  *
- * @param  {String} address Ethereum address of META Graph owner
- * @return {Object}         META Graph object
+ * @param  {String} address Ethereum address of KORD Graph owner
+ * @return {Object}         KORD Graph object
  */
 const createGraphObject = address => {
   if (typeof address === 'undefined' || !isValidAddress(address)) {

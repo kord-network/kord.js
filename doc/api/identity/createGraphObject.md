@@ -1,19 +1,19 @@
 # `createGraphObject()`
 
-Create a valid META Graph object to register a new META Graph.
+Create a valid KORD Graph object to register a new KORD Graph.
 
 ## Parameters
 
-- `address` `<String>` - Ethereum address of META Graph owner
+- `address` `<String>` - Ethereum address of KORD Graph owner
 
 ## Returns
 
-- META Graph object `<Object>`
+- KORD Graph object `<Object>`
 
 ## Example
 
 ```js
-import { createGraphObject } from '@meta.js/identity'
+import { createGraphObject } from '@kord.js/identity'
 
 createGraphObject('0xc4300acba32f5631ec4e45b3d62bd31f947a27e3')
 // =>

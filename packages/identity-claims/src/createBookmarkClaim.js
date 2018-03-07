@@ -1,7 +1,7 @@
 /**
- This file is part of the meta.js library.
+ This file is part of the kord.js library.
 
- Copyright (C) 2017 JAAK MUSIC LTD
+ Copyright (C) 2018 JAAK MUSIC LTD
 
  This program is free software: you can redistribute it and/or modify
  it under the terms of the GNU Lesser General Public License as published by
@@ -19,27 +19,27 @@
  If you have any questions please contact yo@jaak.io
 */
 
-import { bufferToHex, sha3 } from 'ethereumjs-util'
 import {
   createVerifiedIdentityClaimObject,
   verifyIdentityClaim,
-} from '@meta.js/identity-claims'
-import { META_ID_FOLLOW_CLAIM_PROPERTY } from '@meta.js/shared'
+} from './index.js'
+import { KORD_GRAPH_BOOKMARK_CLAIM_PROPERTY } from '@kord.js/shared'
+import { bufferToHex, sha3 } from 'ethereumjs-util'
 
 /**
- * Create a valid META Identity Claim object for a follow claim
- * A follow claim attests that a META ID has independently verified the claims
- * made about another META ID
+ * Create a valid KORD Claim object for a bookmark claim
+ * A bookmark claim attests that a KORD ID has independently verified the claims
+ * made about another KORD ID
  *
- * @param  {Array}  claims            Set of META Identity Claims to verify
- * @param  {Object} graph             META Claims Graph name
- * @param  {Object} issuer            META Identity initiating the follow claim
- * @param  {String} issuer.id         META Identity `id` of claim issuer
+ * @param  {Array}  claims            Set of KORD Claims to verify
+ * @param  {Object} graph             KORD Graph name
+ * @param  {Object} issuer            KORD Agent initiating the bookmark claim
+ * @param  {String} issuer.id         KORD ID of claim issuer
  * @param  {String} issuer.privateKey Private key of claim issuer
- * @param  {String} subject           META Identity `id` receiving the follow claim
- * @return {Object}                   Verified META Identity Follow Claim
+ * @param  {String} subject           KORD ID receiving the Bookmark claim
+ * @return {Object}                   Verified KORD Graph Bookmark Claim
  */
-const followMetaIdentity = (claims, graph, issuer, subject) => {
+const createBookmarkClaim = (claims, graph, issuer, subject) => {
   if (typeof claims === 'undefined' || !Array.isArray(claims)) {
     throw new Error('`claims` is undefined or not an array.')
   }
@@ -67,8 +67,8 @@ const followMetaIdentity = (claims, graph, issuer, subject) => {
     throw new Error('`subject` is undefined or not of type string.')
   }
 
-  // verify all claims made about the subject META Identity
-  const isMetaIdentityVerfied = claims.every(claim => {
+  // verify all claims made about the subject KORD Agent
+  const isKordGraphVerfied = claims.every(claim => {
     return verifyIdentityClaim(
       claim.issuerAddress,
       bufferToHex(sha3(claim.claim)),
@@ -76,11 +76,11 @@ const followMetaIdentity = (claims, graph, issuer, subject) => {
     )
   })
 
-  // disallow follow claim if META Identity cannot be verified
-  if (!isMetaIdentityVerfied) {
+  // disallow bookmark claim if KORD Graph cannot be verified
+  if (!isKordGraphVerfied) {
     return {
       error: new Error(
-        'META Identity could not be verified. Ensure each claim has a valid `issuerAddress`.'
+        'KORD Graph could not be verified. Ensure each claim has a valid `issuerAddress`.'
       ),
     }
   }
@@ -88,8 +88,8 @@ const followMetaIdentity = (claims, graph, issuer, subject) => {
   // set claim message to the claim subject's `id`
   const claimMessage = subject
 
-  // set claim `property` for follow claim
-  const property = META_ID_FOLLOW_CLAIM_PROPERTY
+  // set claim `property` for bookmark claim
+  const property = KORD_GRAPH_BOOKMARK_CLAIM_PROPERTY
 
   return createVerifiedIdentityClaimObject(
     claimMessage,
@@ -100,4 +100,4 @@ const followMetaIdentity = (claims, graph, issuer, subject) => {
   )
 }
 
-export default followMetaIdentity
+export default createBookmarkClaim
